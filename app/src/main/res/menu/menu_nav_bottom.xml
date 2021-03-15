@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home" />
+
+    <item
+        android:id="@+id/nav_task"
+        android:title="Task"
+        android:icon="@drawable/ic_task" />
+
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
+    <item
+        android:id="@+id/nav_note"
+        android:title="Note"
+        android:icon="@drawable/ic_note" />
+
+    <item
+        android:id="@+id/nav_community"
+        android:title="Community"
+        android:icon="@drawable/ic_group" />
+</menu>

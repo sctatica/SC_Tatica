@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "480341063596",
+    "project_id": "sc2021-1da84",
+    "storage_bucket": "sc2021-1da84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480341063596:android:0d648a0234790fa998ac09",
+        "android_client_info": {
+          "package_name": "com.sang.userlogin_registration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480341063596-2vtl5km5f1fndpqb9lftpmmonrkikvh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK-muAFow4oRnn2fhETrUZZ0a51cmmjgE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480341063596-2vtl5km5f1fndpqb9lftpmmonrkikvh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

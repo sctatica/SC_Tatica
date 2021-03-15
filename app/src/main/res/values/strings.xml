@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Login With Firebase</string>
+    <string name="SC_logo">SC logo</string>
+    <string name="input_username">Enter your mail address</string>
+    <string name="input_password">Enter your password</string>
+    <string name="welcome">welcome</string>
+    <string name="create_acc">Create an account?</string>
+    <string name="register">Register</string>
+    <string name="confirm_password">Confirm your password</string>
+    <string name="login">login</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="pitime">Tatica</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="log_in">Log in</string>
+    <string name="use_social_login">Log in with social networks</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="account">Account</string>
+    <string name="create">Create an</string>
+    <string name="use_social_networks_signup">Use social networks</string>
+    <string name="log_out">Log out</string>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="pomodoro_tab">PiTime</string>
+    <string name="today_tab">Today\'s task</string>
+    <string name="task_in_duration">Task In Duration</string>
+    <string name="task_end_duration">Task End Duration</string>
+    <string name="action_delete">Delete Task</string>
+    <string name="action_archive">Finish Task</string>
+</resources>
