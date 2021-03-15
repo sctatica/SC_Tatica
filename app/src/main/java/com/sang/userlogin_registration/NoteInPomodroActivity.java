@@ -14,31 +14,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class NoteInPomodro extends AppCompatActivity {
+public class NoteInPomodroActivity extends AppCompatActivity {
 
-    EditText mTitleEt, mDescriptionEt;
-    Button mSaveBtn, mShowNoteBtn;
+    private EditText mTitleEt, mDescriptionEt;
+    private Button mSaveBtn, mShowNoteBtn;
 
-    ProgressDialog pd;
+    private ProgressDialog pd;
 
     // Firebase instance
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
 
-    String pId, pTitle, pDescription;
+    private String pId, pTitle, pDescription;
+
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_in_pomodro);
 
-        // get Firebase instance
+        // get Firebase instance:
         db = FirebaseFirestore.getInstance();
+
+        // init firebase:
+        firebaseAuth = FirebaseAuth.getInstance();
+        currentUser = firebaseAuth.getCurrentUser();
 
         // initialize views
         mTitleEt = findViewById(R.id.title_in_note);
@@ -108,7 +120,7 @@ public class NoteInPomodro extends AppCompatActivity {
         mShowNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(NoteInPomodro.this, ListUserNotes.class));
+                startActivity(new Intent(NoteInPomodroActivity.this, ListUserNotesActivity.class));
                 finish();
             }
         });
@@ -121,14 +133,15 @@ public class NoteInPomodro extends AppCompatActivity {
         // show progress bar when user click save button
         pd.show();
 
-        db.collection("User's note").document(id)
-                .update("title", title, "description",description)
+        ModelUserNotes newNote = new ModelUserNotes(currentUser.getUid(), currentUser.getEmail(), id, title, description);
+
+        db.collection("User's note").document(id).set(newNote)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // called when updated successfully
                         pd.dismiss();
-                        Toast.makeText(NoteInPomodro.this, "Updated successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NoteInPomodroActivity.this, "Updated successfully", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -136,7 +149,7 @@ public class NoteInPomodro extends AppCompatActivity {
                 // called when fail update
                 pd.dismiss();
                 // get and show any error
-                Toast.makeText(NoteInPomodro.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoteInPomodroActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -152,20 +165,16 @@ public class NoteInPomodro extends AppCompatActivity {
 
         // random id for each data
         String id = UUID.randomUUID().toString();
-
-        Map<String,Object> user = new HashMap<>();
-        user.put("id", id); // id of the data
-        user.put("title", title); // title
-        user.put("description",description);
+        ModelUserNotes newNote = new ModelUserNotes(currentUser.getUid(), currentUser.getEmail(), id, title, description);
 
         // add this data
-        db.collection("User's note").document(id).set(user)
+        db.collection("User's note").document(id).set(newNote)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // this will be called when data is added successfully
                         pd.dismiss();
-                        Toast.makeText(NoteInPomodro.this,"Uploaded successfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NoteInPomodroActivity.this,"Uploaded successfully",Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -173,7 +182,7 @@ public class NoteInPomodro extends AppCompatActivity {
                 // this will be called if there is any error when uploading
                 pd.dismiss();
                 // get and show error message
-                Toast.makeText(NoteInPomodro.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoteInPomodroActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
         });

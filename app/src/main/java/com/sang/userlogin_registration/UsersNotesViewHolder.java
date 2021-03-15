@@ -6,12 +6,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ViewHolder_UserNotes extends RecyclerView.ViewHolder {
+public class UsersNotesViewHolder extends RecyclerView.ViewHolder {
 
     TextView mTitleTv, mDescriptionTv;
     View mView;
 
-    public ViewHolder_UserNotes(@NonNull View itemView) {
+    public UsersNotesViewHolder(@NonNull View itemView) {
         super(itemView);
 
         mView = itemView;
@@ -41,7 +41,7 @@ public class ViewHolder_UserNotes extends RecyclerView.ViewHolder {
     }
 
     // interface for click listener
-    private  ViewHolder_UserNotes.ClickListener mClickListener;
+    private  UsersNotesViewHolder.ClickListener mClickListener;
 
     public  interface ClickListener{
         void OnItemClick(View view, int position);
@@ -49,7 +49,7 @@ public class ViewHolder_UserNotes extends RecyclerView.ViewHolder {
 
     }
 
-    public  void setOnClickListener(ViewHolder_UserNotes.ClickListener clickListener){
+    public  void setOnClickListener(UsersNotesViewHolder.ClickListener clickListener){
          mClickListener = clickListener;
     }
 }

@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CustomAdapter_UserNotes extends RecyclerView.Adapter<ViewHolder_UserNotes> {
+public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder> {
 
-    ListUserNotes listActivity;
+    ListUserNotesActivity listActivity;
     List<ModelUserNotes> modelUserNotes;
     Context context;
 
-    public CustomAdapter_UserNotes(ListUserNotes listActivity, List<ModelUserNotes> modelUserNotes) {
+    public UserNotesAdapter(ListUserNotesActivity listActivity, List<ModelUserNotes> modelUserNotes) {
         this.listActivity = listActivity;
         this.modelUserNotes = modelUserNotes;
 
@@ -28,15 +28,15 @@ public class CustomAdapter_UserNotes extends RecyclerView.Adapter<ViewHolder_Use
 
     @NonNull
     @Override
-    public ViewHolder_UserNotes onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UsersNotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        // inflate layout
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.model_user_notes,parent,false);
 
-        ViewHolder_UserNotes viewHolder_userNotes = new ViewHolder_UserNotes(itemView);
+        UsersNotesViewHolder viewHolder_userNotes = new UsersNotesViewHolder(itemView);
         // handle item clicks
 
-        viewHolder_userNotes.setOnClickListener(new ViewHolder_UserNotes.ClickListener() {
+        viewHolder_userNotes.setOnClickListener(new UsersNotesViewHolder.ClickListener() {
             @Override
             public void OnItemClick(View view, int position) {
                 // this will be called when user click item
@@ -64,7 +64,7 @@ public class CustomAdapter_UserNotes extends RecyclerView.Adapter<ViewHolder_Use
                             String description = modelUserNotes.get(position).getDescription();
 
                             // intent to start activity
-                            Intent intent = new Intent(listActivity, NoteInPomodro.class );
+                            Intent intent = new Intent(listActivity, NoteInPomodroActivity.class );
 
                             // put data in intent
                             intent.putExtra("pId",id);
@@ -88,7 +88,7 @@ public class CustomAdapter_UserNotes extends RecyclerView.Adapter<ViewHolder_Use
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder_UserNotes holder, int position) {
+    public void onBindViewHolder(@NonNull UsersNotesViewHolder holder, int position) {
         // bind views / set data
         holder.mTitleTv.setText(modelUserNotes.get(position).getTitle());
         holder.mDescriptionTv.setText(modelUserNotes.get(position).getDescription());

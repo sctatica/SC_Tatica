@@ -20,10 +20,9 @@
         android:theme="@style/Theme.UserLogin_Registration">
 
 
-        <activity android:name=".ListUserNotes"/>
-        <activity android:name=".Pomodoro_break"/>
-        <activity android:name=".NoteInPomodro"/>
-
+        <activity android:name=".ListUserNotesActivity"/>
+        <activity android:name=".PomodoroBreakActivity"/>
+        <activity android:name=".NoteInPomodroActivity"/>
         <activity android:name=".EditTaskActivity"/>
         <activity android:name=".TaskManagementActivity" />
         <activity android:name=".CreateTaskActivity" />

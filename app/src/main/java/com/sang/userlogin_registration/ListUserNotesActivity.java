@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -22,16 +24,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUserNotes extends AppCompatActivity {
+public class ListUserNotesActivity extends AppCompatActivity {
 
     List<ModelUserNotes> modelUserNotes_list = new ArrayList<>();
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-    // firestore instance
+    // Firebase:
     FirebaseFirestore db;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser currentUser;
 
-    CustomAdapter_UserNotes customAdapter_userNotes;
+    UserNotesAdapter customAdapter_userNotes;
     
     ProgressDialog pd;
 
@@ -44,6 +48,8 @@ public class ListUserNotes extends AppCompatActivity {
 
         // initialize Firebase
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        currentUser = firebaseAuth.getCurrentUser();
         
         // initialize views
         mRecyclerView = findViewById(R.id.recycler_view_user_notes);
@@ -63,7 +69,7 @@ public class ListUserNotes extends AppCompatActivity {
         mAddNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ListUserNotes.this, NoteInPomodro.class));
+                startActivity(new Intent(ListUserNotesActivity.this, NoteInPomodroActivity.class));
                 finish();
             }
         });
@@ -84,15 +90,15 @@ public class ListUserNotes extends AppCompatActivity {
                         pd.dismiss();
                         // show Data
                         for (DocumentSnapshot user:task.getResult()){
-                            ModelUserNotes modelUserNotes = new ModelUserNotes(user.getString("id"),
-                            user.getString("title"),
-                            user.getString("description"));
-
-                            modelUserNotes_list.add(modelUserNotes);
-
+                            if (user.getString("userID").equals(currentUser.getUid())) {
+                                ModelUserNotes modelUserNotes = new ModelUserNotes(user.getString("id"),
+                                        user.getString("title"),
+                                        user.getString("description"));
+                                modelUserNotes_list.add(modelUserNotes);
+                            }
                         }
                         // adapter
-                        customAdapter_userNotes = new CustomAdapter_UserNotes(ListUserNotes.this, modelUserNotes_list);
+                        customAdapter_userNotes = new UserNotesAdapter(ListUserNotesActivity.this, modelUserNotes_list);
 
                         mRecyclerView.setAdapter(customAdapter_userNotes);
 

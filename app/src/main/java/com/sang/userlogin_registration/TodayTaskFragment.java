@@ -142,6 +142,7 @@ public class TodayTaskFragment extends Fragment {
                         startActivity(new Intent(getActivity(), TaskManagementActivity.class));
                         return true;
                     case R.id.nav_note:
+                        startActivity(new Intent(getActivity(), ListUserNotesActivity.class));
                         return true;
                     case R.id.nav_community:
                         return true;

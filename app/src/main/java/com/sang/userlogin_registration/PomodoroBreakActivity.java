@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Locale;
 
-public class Pomodoro_break extends AppCompatActivity {
+public class PomodoroBreakActivity extends AppCompatActivity {
 
     private int seconds = 5;//s;
     Animation rotate;

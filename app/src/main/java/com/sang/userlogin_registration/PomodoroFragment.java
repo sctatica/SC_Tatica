@@ -155,7 +155,7 @@ public class PomodoroFragment extends Fragment {
         take_note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goto_note_activity = new Intent(getActivity(), NoteInPomodro.class);
+                Intent goto_note_activity = new Intent(getActivity(), NoteInPomodroActivity.class);
                 startActivity(goto_note_activity);
             }
         });
@@ -188,7 +188,7 @@ public class PomodoroFragment extends Fragment {
         letsBreak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), Pomodoro_break.class));
+                startActivity(new Intent(getActivity(), PomodoroBreakActivity.class));
             }
         });
 
