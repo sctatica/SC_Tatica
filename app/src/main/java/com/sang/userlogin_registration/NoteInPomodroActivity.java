@@ -97,7 +97,11 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                     String id = pId;
                     String title = mTitleEt.getText().toString().trim();
                     String description = mDescriptionEt.getText().toString().trim();
-                    
+
+                    if (title.equals("") || (description.equals(""))) {
+                        Toast.makeText(NoteInPomodroActivity.this, "Please fill all the blanks", Toast.LENGTH_SHORT).show();
+                    }
+                    else
                     // function call to update the data
                     uploadData(id, title, description);
                 }
@@ -108,6 +112,10 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                     String title = mTitleEt.getText().toString().trim();
                     String description = mDescriptionEt.getText().toString().trim();
 
+                    if (title.equals("") || (description.equals(""))) {
+                        Toast.makeText(NoteInPomodroActivity.this, "Please fill all the blanks", Toast.LENGTH_SHORT).show();
+                    }
+                    else
                     // function call to upload data
                     uploadData(title, description);
 

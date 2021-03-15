@@ -18,12 +18,10 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
 
     ListUserNotesActivity listActivity;
     List<ModelUserNotes> modelUserNotes;
-    Context context;
 
     public UserNotesAdapter(ListUserNotesActivity listActivity, List<ModelUserNotes> modelUserNotes) {
         this.listActivity = listActivity;
         this.modelUserNotes = modelUserNotes;
-
     }
 
     @NonNull
