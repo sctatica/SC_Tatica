@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login With Firebase</string>
+    <string name="app_name">Tatica</string>
     <string name="SC_logo">SC logo</string>
     <string name="input_username">Enter your mail address</string>
     <string name="input_password">Enter your password</string>
@@ -22,10 +22,26 @@
     <string name="log_out">Log out</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
-    <string name="pomodoro_tab">PiTime</string>
-    <string name="today_tab">Today\'s task</string>
     <string name="task_in_duration">Task In Duration</string>
     <string name="task_end_duration">Task End Duration</string>
     <string name="action_delete">Delete Task</string>
     <string name="action_archive">Finish Task</string>
+    <string name="today_tab">Today\'s task</string>
+    <string name="pomodoro_tab">PiTime</string>
+    <string name="today_s_task">Today\'s task</string>
+    <string name="you_will">you will work in</string>
+    <string name="hour">hours</string>
+    <string name="take_note">Take note</string>
+    <string name="write_something">Write something</string>
+    <string name="save">save</string>
+    <string name="_4">4</string>
+    <string name="title">Title</string>
+    <string name="show_notes">show notes</string>
+    <string name="description">Description</string>
+    <string-array name="list_howLong">
+        <item>55/5</item>
+        <item>50/10</item>
+        <item>45/15</item>
+        <item>40/20</item>
+    </string-array>
 </resources>

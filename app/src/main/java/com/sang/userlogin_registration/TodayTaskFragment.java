@@ -1,6 +1,5 @@
 package com.sang.userlogin_registration;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

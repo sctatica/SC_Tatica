@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sang.userlogin_registration">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sang.userlogin_registration"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation="portrait"
+    tools:ignore="LockedOrientationActivity">
 
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,7 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UserLogin_Registration">
-        <activity android:name=".EditTaskActivity"></activity>
+
+
+        <activity android:name=".ListUserNotes"/>
+        <activity android:name=".Pomodoro_break"/>
+        <activity android:name=".NoteInPomodro"/>
+
+        <activity android:name=".EditTaskActivity"/>
         <activity android:name=".TaskManagementActivity" />
         <activity android:name=".CreateTaskActivity" />
         <activity android:name=".ProfileActivity" />

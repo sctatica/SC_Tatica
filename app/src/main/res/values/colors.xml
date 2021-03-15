@@ -17,5 +17,6 @@
     <color name="yellow">#F4B400</color>
     <color name="green">#0F9D58</color>
     <color name="facebook_color"> #3b5998</color>
+    <color name="light_gray">#d3d3d3</color>
 
 </resources>

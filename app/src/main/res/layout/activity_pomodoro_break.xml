@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Pomodoro_break">
+
+    <ImageView
+        android:id="@+id/circle"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="323dp"
+        android:src="@drawable/circle6" />
+
+    <TextView
+        android:text="Go go"
+        android:id="@+id/time_break"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="125dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center_horizontal"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@color/SC_color2"
+        android:textSize="70sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/breakBtn"
+        android:contentDescription="play button in break activity"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="700dp"
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

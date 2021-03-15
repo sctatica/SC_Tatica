@@ -1,6 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="42dp"
+        android:layout_height="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="693dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:tint="@color/SC_color5" />
+
+    <ImageView
+        android:id="@+id/sub"
+        android:layout_width="53dp"
+        android:layout_height="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="680dp"
+        android:src="@drawable/ic_baseline_minus_24"
+        app:tint="@color/SC_color5" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="215dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center_horizontal"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@color/SC_color2"
+        android:textSize="70sp" />
+
+    <TextView
+        android:id="@+id/youWil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:enabled="false"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/you_will"
+        android:textSize="14sp" />
+
+    <Spinner
+        android:id="@+id/howLong"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="368dp"
+        android:enabled="false"
+        android:entries="@array/list_howLong"
+        android:fontFamily="@font/montserrat"
+        android:spinnerMode="dropdown"
+        android:text="@string/_4"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/circle"
+        android:layout_width="372dp"
+        android:layout_height="363dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="323dp"
+        android:src="@drawable/circle6" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/SC_color4"
+        android:src="@drawable/ic_baseline_pause_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/SC_color4"
+        android:src="@drawable/ic_baseline_play_arrow_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/letsBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="@color/SC_color4"
+        android:src="@drawable/ic_baseline_free_breakfast_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/SC_color4"
+        android:src="@drawable/ic_baseline_settings_backup_restore_24"
+        app:fabSize="mini" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="430dp"
+        android:fontFamily="@font/montserrat" />
+
+    <ToggleButton
+        android:id="@+id/wifi"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="571dp"
+        android:background="@drawable/tooglebutton_selector"
+        android:drawableTop="@drawable/outline_signal_wifi_off_white_24"
+        android:textSize="0sp" />
+
+
+    <ToggleButton
+        android:id="@+id/screen_never_off"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="571dp"
+        android:background="@drawable/tooglebutton_selector"
+        android:drawableTop="@drawable/outline_screen_lock_portrait_white_24"
+        android:textSize="0sp" />
+
+    <ToggleButton
+        android:id="@+id/music"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="571dp"
+        android:background="@drawable/tooglebutton_selector"
+        android:drawableTop="@drawable/outline_library_music_white_24"
+        android:textSize="0sp" />
+
+    <Button
+        android:id="@+id/note"
+        android:layout_width="42dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="571dp"
+        android:background="@drawable/tooglebutton_selector"
+        android:drawableLeft="@drawable/outline_edit_white_20"
+        android:textSize="0sp" />
+
+</RelativeLayout>
