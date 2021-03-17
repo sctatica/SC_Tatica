@@ -32,7 +32,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null){
             //user signed in, goto Home activity
-            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
         }
         else
         {

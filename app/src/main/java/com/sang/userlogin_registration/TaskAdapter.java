@@ -8,6 +8,7 @@ import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -25,7 +26,6 @@ import java.util.HashMap;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
     public static final String EDIT_TASK = "Edit Task";
-    private static final String TAG = "TaskAdapter";
 
     private Context context;
     private ArrayList<Task> userTasks;
@@ -48,13 +48,32 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = firebaseDatabase.getReference("Tasks");
-                HashMap<String, Object> update = new HashMap<>();
-                update.put("doneStatus", true);
-                databaseReference.child(userTasks.get(position).getTaskId()).updateChildren(update);
+                if (!userTasks.get(position).isDoneStatus()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                            .setTitle("Have you finished " + userTasks.get(position).getName() + " task ?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                    DatabaseReference databaseReference = firebaseDatabase.getReference("Tasks");
+                                    HashMap<String, Object> update = new HashMap<>();
+                                    update.put("doneStatus", true);
+                                    databaseReference.child(userTasks.get(position).getTaskId()).updateChildren(update);
+                                }
+                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    //dismiss dialog
+                                    dialog.dismiss();
+                                }
+                            });
+                    builder.create().show();
+                }
             }
         });
+        if (userTasks.get(position).isDoneStatus()) {
+            holder.checkBox.setChecked(true);
+        }
 
         //Get Task data:
         String taskName = String.valueOf(userTasks.get(position).getName());
@@ -80,23 +99,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 break;
         }
 
-        if (userTasks.get(position).isDoneStatus()) {
-            holder.checkBox.setChecked(true);
-        }
-
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context)
-                        .setTitle("Edit Task")
-                        .setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+                        .setTitle("Do you want to edit " + userTasks.get(position).getName() + " task ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(context, EditTaskActivity.class);
                                 intent.putExtra(EDIT_TASK, userTasks.get(position));
                                 context.startActivity(intent);
                             }
-                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //dismiss dialog

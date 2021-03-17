@@ -28,10 +28,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import static com.sang.userlogin_registration.TaskAdapter.EDIT_TASK;
 
@@ -72,7 +75,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         //init toolbar:
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Create Task");
+        toolbar.setTitle("Edit Task");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
@@ -94,6 +97,27 @@ public class EditTaskActivity extends AppCompatActivity {
             txtDueDate.setText(incomingTask.getDueDate());
             edtShortDesc.setText(incomingTask.getShortDesc());
         }
+
+        //TODO: Get avatar image of user:
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Users");
+        Query query = databaseReference.orderByChild("userID").equalTo(userID);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String image = String.valueOf(ds.child("image").getValue());
+                    //Set avatar image
+                    try {
+                        Picasso.get().load(image).into(imageView);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
 
         //init current user firebase:
         firebaseAuth = FirebaseAuth.getInstance();
@@ -165,20 +189,23 @@ public class EditTaskActivity extends AppCompatActivity {
                 due_date = txtDueDate.getText().toString();
                 shortDesc = edtShortDesc.getText().toString();
 
+                //TODO: Check due date and start date:
+                String InputStartDate = String.valueOf(start_time + " " + start_date);
+                String InputDueDate = String.valueOf(due_time + " " + due_date);
+                Date date_start = new Date();
+                Date date_end = new Date();
+                try {
+                    date_start = new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(InputStartDate);
+                    date_end = new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(InputDueDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 if (name.equals("")) {
                     Toast.makeText(EditTaskActivity.this, "Please input name of task", Toast.LENGTH_SHORT).show();
                 }
-                else if (start_time.equals("")){
-                    Toast.makeText(EditTaskActivity.this, "Please choose start time of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (start_date.equals("")){
-                    Toast.makeText(EditTaskActivity.this, "Please choose start date of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (due_time.equals("")){
-                    Toast.makeText(EditTaskActivity.this, "Please choose due time of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (due_date.equals("")){
-                    Toast.makeText(EditTaskActivity.this, "Please choose due date of task", Toast.LENGTH_SHORT).show();
+                else if (!date_end.after(date_start)) {
+                    Toast.makeText(EditTaskActivity.this, "Due date should be after Start date", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     //Create a new Task in firebase:

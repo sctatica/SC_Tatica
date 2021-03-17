@@ -2,7 +2,9 @@ package com.sang.userlogin_registration;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +44,10 @@ public class ListUserNotesActivity extends AppCompatActivity {
     ProgressDialog pd;
 
     FloatingActionButton mAddNoteBtn;
+
+    //Views:
+    private MaterialToolbar toolbar;
+    private BottomNavigationView nav_bottomView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +79,38 @@ public class ListUserNotesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ListUserNotesActivity.this, NoteInPomodroActivity.class));
                 finish();
+            }
+        });
+
+        //TODO: Set up Top action - bar:
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setTitle("Note Management");
+        setSupportActionBar(toolbar);
+
+        //TODO: Set up bottom navigation:
+        nav_bottomView = findViewById(R.id.nav_bottomView);
+        nav_bottomView.setSelectedItemId(R.id.nav_note);
+        nav_bottomView.setBackground(null);
+        nav_bottomView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                //Handle item click
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        startActivity(new Intent(ListUserNotesActivity.this, HomeActivity.class));
+                        return true;
+                    case R.id.nav_task:
+                        startActivity(new Intent(ListUserNotesActivity.this, TaskManagementActivity.class));
+                        return true;
+                    case R.id.nav_note:
+                        return true;
+                    case R.id.nav_community:
+                        return true;
+                    default:
+                        break;
+                }
+                return false;
             }
         });
     }

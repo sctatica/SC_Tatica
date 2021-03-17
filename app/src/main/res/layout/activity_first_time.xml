@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstTimeActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/undraw_neighbors_ciwb" />
+
+    <TextView
+        android:id="@+id/txtSayHello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/SC_color2"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center_horizontal"
+        android:text="Let's me know your name"
+        android:textColor="@color/SC_color4"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/edtUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSayHello"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:hint="Hi!"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/SC_color"
+        android:text="OK" />
+
+</RelativeLayout>

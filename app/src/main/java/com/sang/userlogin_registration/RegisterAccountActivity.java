@@ -99,7 +99,7 @@ public class RegisterAccountActivity extends AppCompatActivity {
                             createUser(user);
 
                             Toast.makeText(RegisterAccountActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(RegisterAccountActivity.this, MainActivity.class);
+                            Intent intent = new Intent(RegisterAccountActivity.this, FirstTimeActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fail, display a message to the user

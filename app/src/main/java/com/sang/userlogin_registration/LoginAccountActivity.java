@@ -255,8 +255,8 @@ public class LoginAccountActivity extends AppCompatActivity {
                             // Sign in successful
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            // user logged in, stat profile
-                            startActivity(new Intent(LoginAccountActivity.this, MainActivity.class));
+                            // user logged in
+                            startActivity(new Intent(LoginAccountActivity.this, HomeActivity.class));
                             finish();
                         }
                         else{
@@ -309,14 +309,20 @@ public class LoginAccountActivity extends AppCompatActivity {
                             //if user is signing in first time then get and show user info from google account:
                             if (task.getResult().getAdditionalUserInfo().isNewUser()) {
                                 createUser(user);
+                                // user email
+                                Toast.makeText(LoginAccountActivity.this,"Logged in successful",Toast.LENGTH_LONG).show();
+                                // go to home screen after login successful
+                                startActivity(new Intent(LoginAccountActivity.this, FirstTimeActivity.class));
+                                finish();
+                            }
+                            else {
+                                // user email
+                                Toast.makeText(LoginAccountActivity.this,"Logged in successful",Toast.LENGTH_LONG).show();
+                                // go to home screen after login successful
+                                startActivity(new Intent(LoginAccountActivity.this, HomeActivity.class));
+                                finish();
                             }
 
-                            // user email
-                            Toast.makeText(LoginAccountActivity.this,"Logged in successful",Toast.LENGTH_LONG).show();
-                            // go to home screen after login successful
-                            startActivity(new Intent(LoginAccountActivity.this, MainActivity.class));
-                            finish();
-                            //updateUI(user);
                         } else {
                             Log.d(TAG, "Sign in with Credential: failure");
                             // If sign in fails, display a message to the user.

@@ -98,12 +98,12 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                     String title = mTitleEt.getText().toString().trim();
                     String description = mDescriptionEt.getText().toString().trim();
 
-                    if (title.equals("") || (description.equals(""))) {
-                        Toast.makeText(NoteInPomodroActivity.this, "Please fill all the blanks", Toast.LENGTH_SHORT).show();
-                    }
+                    if (title.equals(""))
+                        Toast.makeText(NoteInPomodroActivity.this, "Please enter the title", Toast.LENGTH_SHORT).show();
+                    else if (description.equals(""))
+                        Toast.makeText(NoteInPomodroActivity.this, "Please enter the description", Toast.LENGTH_SHORT).show();
                     else
-                    // function call to update the data
-                    uploadData(id, title, description);
+                        uploadData(id, title, description);
                 }
                 else
                 {
@@ -112,13 +112,12 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                     String title = mTitleEt.getText().toString().trim();
                     String description = mDescriptionEt.getText().toString().trim();
 
-                    if (title.equals("") || (description.equals(""))) {
-                        Toast.makeText(NoteInPomodroActivity.this, "Please fill all the blanks", Toast.LENGTH_SHORT).show();
-                    }
+                    if (title.equals(""))
+                        Toast.makeText(NoteInPomodroActivity.this, "Please enter the title", Toast.LENGTH_SHORT).show();
+                    else if (description.equals(""))
+                        Toast.makeText(NoteInPomodroActivity.this, "Please enter the description", Toast.LENGTH_SHORT).show();
                     else
-                    // function call to upload data
-                    uploadData(title, description);
-
+                        uploadData(title, description);
                 }
             }
 

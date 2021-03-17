@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/action_profile"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_person_icon"
         android:title="Profile"
         app:showAsAction="always"/>
 

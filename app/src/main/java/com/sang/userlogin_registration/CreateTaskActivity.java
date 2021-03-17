@@ -3,8 +3,10 @@ package com.sang.userlogin_registration;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,10 +31,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
@@ -41,7 +47,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     //Views:
     private ImageView imageView;
-    private TextView txtUserName, txtUserEmail;
+    private TextView txtUserName;
     private EditText edtName;
     private Spinner spinnerPriorities;
     private TextView txtStartTime, txtStartDate,
@@ -85,7 +91,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         //TODO: Get Name, Email, ID of CURRENT USER:
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Users");
-        Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
+        Query query = databaseReference.orderByChild("userID").equalTo(user.getUid());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -93,13 +99,16 @@ public class CreateTaskActivity extends AppCompatActivity {
                     String user_Name = String.valueOf(ds.child("name").getValue());
                     String user_Email = String.valueOf(ds.child("email").getValue());
                     String user_ID = String.valueOf(ds.child("userID").getValue());
+                    String image = String.valueOf(ds.child("image").getValue());
 
                     //Set Name and Email to cardView:
                     txtUserName.setText(user_Name);
-                    txtUserEmail.setText(user_Email);
-
-                    //TODO: Get the imageViews (7h24p 14/03/2021):
-//                    String image = String.valueOf(ds.child("image").getValue());
+                    try {
+                        //if image is received then set
+                        Picasso.get().load(image).into(imageView);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                     //Get some info of user:
                     userName = user_Name;
@@ -134,6 +143,18 @@ public class CreateTaskActivity extends AppCompatActivity {
             }
         });
 
+        //TODO: set up default time:
+        Calendar default_calendar = Calendar.getInstance();
+        Date defaultTime = default_calendar.getTime();
+        txtStartTime.setText(new SimpleDateFormat("HH:mm").format(defaultTime));
+        txtStartDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(defaultTime));
+        default_calendar.setTime(defaultTime);
+        default_calendar.add(Calendar.HOUR, 1);
+        defaultTime = default_calendar.getTime();
+        txtDueTime.setText(new SimpleDateFormat("HH:mm").format(defaultTime));
+        txtDueDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(defaultTime));
+
+        //TODO: set up user choose time:
         txtStartTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,7 +188,7 @@ public class CreateTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: Get info of new task:
-                taskID = String.valueOf(System.currentTimeMillis());
+                taskID = String.valueOf(UUID.randomUUID());
                 name = edtName.getText().toString();
                 start_time = txtStartTime.getText().toString();
                 start_date = txtStartDate.getText().toString();
@@ -175,20 +196,23 @@ public class CreateTaskActivity extends AppCompatActivity {
                 due_date = txtDueDate.getText().toString();
                 shortDesc = edtShortDesc.getText().toString();
 
+                //TODO: Check due date and start date:
+                String InputStartDate = String.valueOf(start_time + " " + start_date);
+                String InputDueDate = String.valueOf(due_time + " " + due_date);
+                Date date_start = new Date();
+                Date date_end = new Date();
+                try {
+                    date_start = new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(InputStartDate);
+                    date_end = new SimpleDateFormat("HH:mm dd/MM/yyyy").parse(InputDueDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 if (name.equals("")) {
-                    Toast.makeText(CreateTaskActivity.this, "Please input name of task", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateTaskActivity.this, "Please enter name of task", Toast.LENGTH_SHORT).show();
                 }
-                else if (start_time.equals("")){
-                    Toast.makeText(CreateTaskActivity.this, "Please choose start time of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (start_date.equals("")){
-                    Toast.makeText(CreateTaskActivity.this, "Please choose start date of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (due_time.equals("")){
-                    Toast.makeText(CreateTaskActivity.this, "Please choose due time of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (due_date.equals("")){
-                    Toast.makeText(CreateTaskActivity.this, "Please choose due date of task", Toast.LENGTH_SHORT).show();
+                else if (!date_end.after(date_start)) {
+                    Toast.makeText(CreateTaskActivity.this, "Due date should be after Start date", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     //Create a new Task in firebase:
@@ -196,7 +220,12 @@ public class CreateTaskActivity extends AppCompatActivity {
                     databaseReference = firebaseDatabase.getReference("Tasks");
                     Task newTask = new Task(userName, userEmail, userID, name, start_time, start_date, due_time, due_date, shortDesc, priority, taskID);
                     databaseReference.child(taskID).setValue(newTask);
-                    Toast.makeText(CreateTaskActivity.this, "Create task successfully", Toast.LENGTH_SHORT).show();
+
+                    //Navigate to TaskManagementActivity:
+                    Toast.makeText(CreateTaskActivity.this, "Create a new task successfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(CreateTaskActivity.this, TaskManagementActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
             }
         });
@@ -205,7 +234,6 @@ public class CreateTaskActivity extends AppCompatActivity {
     private void initViews() {
         imageView = findViewById(R.id.imageView);
         txtUserName = findViewById(R.id.txtUserName);
-        txtUserEmail = findViewById(R.id.txtUserEmail);
         edtName = findViewById(R.id.edtName);
         spinnerPriorities = findViewById(R.id.spinnerPriorities);
         txtStartTime = findViewById(R.id.txtStartTime);
@@ -216,6 +244,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         btnCreateTask = findViewById(R.id.btnCreateTask);
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void showStartTimeDialog() {
         final Calendar calendar = Calendar.getInstance();
         TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {

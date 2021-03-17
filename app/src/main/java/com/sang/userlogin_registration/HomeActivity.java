@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -24,6 +26,18 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+
+import static com.sang.userlogin_registration.FirstTimeActivity.INPUT_NAME;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -31,10 +45,32 @@ public class HomeActivity extends AppCompatActivity {
     private MaterialToolbar toolbar;
     private NavigationView nav_drawerView;
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //init auth firebase:
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+
+        //get userName:
+        Intent intent = getIntent();
+        if (intent != null) {
+            String user_Name = intent.getStringExtra(INPUT_NAME);
+            if (user_Name != null) {
+                firebaseDatabase = FirebaseDatabase.getInstance();
+                databaseReference = firebaseDatabase.getReference("Users");
+                HashMap<String, Object> update = new HashMap<>();
+                update.put("name", user_Name);
+                databaseReference.child(user.getUid()).updateChildren(update);
+            }
+        }
 
         //Attach the SectionsPagerAdapter to the ViewPager
         SectionsPagerAdapter pagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -64,12 +100,47 @@ public class HomeActivity extends AppCompatActivity {
         toggle.syncState();
 
         nav_drawerView = findViewById(R.id.nav_drawerView);
+        ImageView imageView = nav_drawerView.findViewById(R.id.imageView);
+        TextView txtName = nav_drawerView.findViewById(R.id.txtName);
+        TextView txtEmail = nav_drawerView.findViewById(R.id.txtEmail);
+
+        // Firebase:
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Users");
+        // Get some info of user:
+        Query query = databaseReference.orderByChild("userID").equalTo(user.getUid());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //check until required data get:
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    //Get data from the user:
+                    String image = String.valueOf(ds.child("image").getValue());
+                    String name = String.valueOf(ds.child("name").getValue());
+                    String email = String.valueOf(ds.child("email").getValue());
+
+                    //set data:
+                    txtName.setText(name);
+                    txtEmail.setText(email);
+
+                    try {
+                        //if image is received then set
+                        Picasso.get().load(image).into(imageView);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
         nav_drawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.nav_profile:
-                        Toast.makeText(HomeActivity.this, "Profile Selected", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_otherUsers:
+                        Toast.makeText(HomeActivity.this, "Other Users Selected", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_rank:
                         Toast.makeText(HomeActivity.this, "Rank Selected", Toast.LENGTH_SHORT).show();
@@ -126,7 +197,11 @@ public class HomeActivity extends AppCompatActivity {
         // get current user
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user == null) {
+        if (user != null){
+            // user signed in and stay here
+            Toast.makeText(this,"You logged in as " + user.getEmail(),Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
             // user not signed in, goto main activity
             startActivity(new Intent(HomeActivity.this, LoginAccountActivity.class));
             finish();

@@ -106,11 +106,10 @@ public class TaskInDurationFragment extends Fragment {
         //TODO: Set up Delete Action:
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
-
         return view;
     }
 
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
@@ -118,29 +117,20 @@ public class TaskInDurationFragment extends Fragment {
         @Override
         public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
             final int position = viewHolder.getAdapterPosition();
-            switch (direction) {
-                case ItemTouchHelper.RIGHT:
-                    firebaseDatabase = FirebaseDatabase.getInstance();
-                    databaseReference = firebaseDatabase.getReference("Tasks");
-                    HashMap<String, Object> update = new HashMap<>();
-                    update.put("doneStatus", true);
-                    databaseReference.child(taskList.get(position).getTaskId()).updateChildren(update);
-                    break;
-                case ItemTouchHelper.LEFT:
-                    Task deletedTask = taskList.get(position);
-                    Snackbar.make(viewHolder.itemView,"You have successfully deleted " + deletedTask.getName(),Snackbar.LENGTH_INDEFINITE)
-                            .setAction("Undo", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                    DatabaseReference databaseReference = firebaseDatabase.getReference("Tasks");
-                                    databaseReference.child(deletedTask.getTaskId()).setValue(deletedTask);
-                                }
-                            }).show();
-                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                    DatabaseReference databaseReference = firebaseDatabase.getReference("Tasks");
-                    databaseReference.child(deletedTask.getTaskId()).removeValue();
-                    break;
+            if (direction == ItemTouchHelper.LEFT) {
+                Task deletedTask = taskList.get(position);
+                Snackbar.make(viewHolder.itemView, "You have successfully deleted " + deletedTask.getName(), Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                DatabaseReference databaseReference = firebaseDatabase.getReference("Tasks");
+                                databaseReference.child(deletedTask.getTaskId()).setValue(deletedTask);
+                            }
+                        }).show();
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = firebaseDatabase.getReference("Tasks");
+                databaseReference.child(deletedTask.getTaskId()).removeValue();
             }
         }
 
@@ -151,14 +141,8 @@ public class TaskInDurationFragment extends Fragment {
                     .addSwipeLeftActionIcon(R.drawable.ic_delete)
                     .addSwipeLeftLabel(getString(R.string.action_delete))
                     .setSwipeLeftLabelColor(Color.WHITE)
-                    .addSwipeRightBackgroundColor(ContextCompat.getColor(getActivity(), R.color.green))
-                    .addSwipeRightActionIcon(R.drawable.ic_archive)
-                    .addSwipeRightLabel(getString(R.string.action_archive))
-                    .setSwipeRightLabelColor(Color.WHITE)
                     .create()
                     .decorate();
-
-
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         }
     };

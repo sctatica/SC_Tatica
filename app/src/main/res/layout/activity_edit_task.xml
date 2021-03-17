@@ -20,12 +20,14 @@
             android:orientation="vertical"
             android:layout_centerHorizontal="true">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_margin="5dp"
                 android:src="@mipmap/ic_launcher_round"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/SC_color2"
                 android:layout_gravity="center" />
 
             <TextView
@@ -35,7 +37,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/montserrat"
-                android:text="User's Name"
+                android:text="User Name"
                 android:textSize="16sp"
                 android:layout_gravity="center"/>
 

@@ -31,8 +31,7 @@
                     android:id="@+id/imageTag"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/ic_launcher_background"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:src="@drawable/task_icon" />
 
             </LinearLayout>
 

@@ -17,60 +17,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_view"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="5dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:src="@mipmap/ic_launcher_round" />
-
-                <TextView
-                    android:id="@+id/txtUserName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:text="Name" />
-
-                <TextView
-                    android:id="@+id/txtUserEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txtUserName"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="2dp"
-                    android:text="Email" />
-
-            </RelativeLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/SC_color2"
+            android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/txtUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
+            android:text="User Name"
+            android:layout_gravity="center"
             android:fontFamily="@font/montserrat"
-            android:text="What is your Task?"
-            android:textColor="#FF5252"
-            android:textSize="45sp" />
+            android:textSize="16sp"
+            />
+
     </LinearLayout>
 
     <TextView
