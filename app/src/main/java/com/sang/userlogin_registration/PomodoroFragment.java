@@ -24,14 +24,35 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Time;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class PomodoroFragment extends Fragment {
 
+    public interface TimeWorkCallBack {
+        void onCallBack(User got_user);
+    }
+
+    public static final String OPTIONAL_BREAK_TIME = "break_time";
+
     private int seconds = 1500;
+    private int workTime = 0;
     private boolean running = false;
     private boolean wasRunning = false;
+    private boolean  case_55_5 = false;
+    private boolean  case_50_10 = false;
+    private boolean  case_45_15 = false;
+    private boolean  case_40_20 = false;
+
     //Intent intent;
     FloatingActionButton playButton, pauseButton, letsBreak, reset;
     Animation rotate;
@@ -41,6 +62,11 @@ public class PomodoroFragment extends Fragment {
     Spinner howLong;
     Button take_note;
     ToggleButton wifi, screen, music;
+    Intent gotoBreak;                   // goto break
+
+    //init firebase auth:
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +86,11 @@ public class PomodoroFragment extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_pomodoro, container, false);
 
-        runTimer(layout);
-        //runTimer_break(layout);
+        // init firebase auth:
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
+        runTimer(layout);
         // rotate the circle
         //rotate = AnimationUtils.loadAnimation(getContext(),R.anim.rotation);
 
@@ -83,7 +111,6 @@ public class PomodoroFragment extends Fragment {
         add = layout.findViewById(R.id.add);
 
         howLong = layout.findViewById(R.id.howLong);
-
         // rotate animation
         circle = layout.findViewById(R.id.circle);
 
@@ -93,6 +120,7 @@ public class PomodoroFragment extends Fragment {
         youWill.setVisibility(View.GONE);
         letsBreak.setVisibility(View.GONE);
         reset.setVisibility(View.GONE);
+        gotoBreak = new Intent(getActivity(), PomodoroBreakActivity.class);
 
 
         // EXTRA FEATURES---------------------------------------------------------------------------
@@ -181,14 +209,42 @@ public class PomodoroFragment extends Fragment {
             public void onClick(View v) {
                 circle.clearAnimation();
                 Toast.makeText(getActivity(), "pause", Toast.LENGTH_SHORT).show();
-                onClickStop();
+                onClickStop(new TimeWorkCallBack() {
+                    @Override
+                    public void onCallBack(User got_user) {
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference reference = database.getReference("Users");
+                        HashMap<String, Object> update = new HashMap<>();
+                        String timeWorkUpdate = String.valueOf(Integer.parseInt(got_user.getTimeWork()) + workTime);
+                        update.put("timeWork", timeWorkUpdate);
+                        reference.child(currentUser.getUid()).updateChildren(update);
+                        workTime = 0;
+                    }
+                });
             }
         });
 
         letsBreak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), PomodoroBreakActivity.class));
+                int optionTimeInAuto = 0;
+                if (case_55_5){
+                    optionTimeInAuto = 300;
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME,optionTimeInAuto);
+                }
+                else if(case_50_10){
+                    optionTimeInAuto = 600;
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
+                }
+                else if(case_45_15){
+                    optionTimeInAuto = 900;
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
+                }
+                else if (case_40_20){
+                    optionTimeInAuto = 1200;
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
+                }
+                startActivity(gotoBreak);
             }
         });
 
@@ -258,8 +314,8 @@ public class PomodoroFragment extends Fragment {
                 // Auto on
                 if (isChecked) {
 
-                    // set timer to 50 minutes and break to 10 minutes
-                    seconds = 5;
+                    // set timer to 55 minutes and break to 5 minutes
+                    seconds = 3300;
                     // Display VISIBLE and ENABLE texts
                     sub.setVisibility(View.GONE);
                     add.setVisibility(View.GONE);
@@ -281,16 +337,32 @@ public class PomodoroFragment extends Fragment {
                             switch (item_clicked) {
                                 case 0:
                                     seconds = 3300;
-                                    //intent = new Intent(getActivity(), Pomodoro_break.class);
+                                    // get data to break
+                                    case_55_5 = true;
+                                    case_50_10 = false;
+                                    case_45_15 = false;
+                                    case_40_20 = false;
                                     break;
                                 case 1:
                                     seconds = 3000;
+                                    case_50_10 = true;
+                                    case_55_5 = false;
+                                    case_45_15 = false;
+                                    case_40_20 = false;
                                     break;
                                 case 2:
                                     seconds = 2700;
+                                    case_45_15 = true;
+                                    case_55_5 = false;
+                                    case_50_10 = false;
+                                    case_40_20 = false;
                                     break;
                                 case 3:
                                     seconds = 2400;
+                                    case_40_20 = true;
+                                    case_55_5 = false;
+                                    case_50_10 = false;
+                                    case_45_15 = false;
                                     break;
                             }
                         }
@@ -303,7 +375,7 @@ public class PomodoroFragment extends Fragment {
 
                 } else {
                     // set time to 25 minutes = 1500s
-                    seconds = 5;
+                    seconds = 1500;
                     // Enable sub and add
                     sub.setEnabled(true);
                     add.setEnabled(true);
@@ -347,10 +419,23 @@ public class PomodoroFragment extends Fragment {
 
     private void onClickStart() {
         running = true;
+        workTime = 0;
     }
 
-    private void onClickStop() {
+    private void onClickStop(TimeWorkCallBack timeWorkCallBack) {
         running = false;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Users");
+        reference.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                timeWorkCallBack.onCallBack(user);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
     // Countdown function for pomodoro timer
@@ -365,18 +450,33 @@ public class PomodoroFragment extends Fragment {
                 int secs = seconds % 60;
 
                 String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
+                String time_test = String.format(Locale.getDefault(), "%03d",workTime);
                 textView.setText(time);
 
                 if (seconds == 0) {
                     running = false;
+                    onClickStop(new TimeWorkCallBack() {
+                                    @Override
+                                    public void onCallBack(User got_user) {
+                                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                        DatabaseReference reference = database.getReference("Users");
+                                        HashMap<String, Object> update = new HashMap<>();
+                                        String timeWorkUpdate = String.valueOf(Integer.parseInt(got_user.getTimeWork()) + workTime);
+                                        update.put("timeWork", timeWorkUpdate);
+                                        reference.child(currentUser.getUid()).updateChildren(update);
+                                        workTime = 0;
+                                    }
+                                });
                     circle.clearAnimation();
                     playButton.setVisibility(View.GONE);
                     pauseButton.setVisibility(View.GONE);
                     letsBreak.setVisibility(View.VISIBLE);
                     reset.setVisibility(View.VISIBLE);
                 }
+
                 if (running && seconds > 0) {
                     seconds--;
+                    workTime++;
                 }
                 handler.postDelayed(this, 1000);
             }

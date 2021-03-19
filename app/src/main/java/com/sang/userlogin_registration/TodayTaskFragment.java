@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,7 +50,9 @@ public class TodayTaskFragment extends Fragment {
     private BottomNavigationView nav_bottomView;
     private FloatingActionButton btnAdd;
 
-    //init recyclerView:
+    //init recyclerView and related to it:
+    private TextView txtNoTask;
+    private ImageView image_empty_task;
     private ArrayList<Task> userTasks;
     private TaskAdapter adapterTask;
     private RecyclerView recyclerView;
@@ -91,6 +94,8 @@ public class TodayTaskFragment extends Fragment {
         });
 
         //Set up for recyclerView:
+        txtNoTask = view.findViewById(R.id.txtNoTask);
+        image_empty_task = view.findViewById(R.id.image_empty_task);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -135,9 +140,17 @@ public class TodayTaskFragment extends Fragment {
                         }
                     };
                     Collections.sort(userTasks, newTasksComparator);
+                    adapterTask = new TaskAdapter(getActivity(), userTasks);
+                    recyclerView.setAdapter(adapterTask);
+                    recyclerView.setVisibility(View.VISIBLE);
+                    image_empty_task.setVisibility(View.INVISIBLE);
+                    txtNoTask.setVisibility(View.INVISIBLE);
                 }
-                adapterTask = new TaskAdapter(getActivity(), userTasks);
-                recyclerView.setAdapter(adapterTask);
+                else {
+                    recyclerView.setVisibility(View.INVISIBLE);
+                    image_empty_task.setVisibility(View.VISIBLE);
+                    txtNoTask.setVisibility(View.VISIBLE);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -165,6 +178,7 @@ public class TodayTaskFragment extends Fragment {
                         startActivity(new Intent(getActivity(), ListUserNotesActivity.class));
                         return true;
                     case R.id.nav_community:
+                        startActivity(new Intent(getActivity(), CommunityActivity.class));
                         return true;
                     default:
                         break;
@@ -198,7 +212,7 @@ public class TodayTaskFragment extends Fragment {
             final int position = viewHolder.getAdapterPosition();
             if (direction == ItemTouchHelper.LEFT) {
                 Task deletedTask = userTasks.get(position);
-                Snackbar.make(viewHolder.itemView, "You have successfully deleted " + deletedTask.getName(), Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(viewHolder.itemView, "You have successfully deleted " + deletedTask.getName(), Snackbar.LENGTH_LONG)
                         .setAction("Undo", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -227,7 +241,9 @@ public class TodayTaskFragment extends Fragment {
     };
 
     private boolean onDurationDate(String startDate, String dueDate, String currentDate) {
-        Date start = null, end = null, entry = null;
+        Date start = new Date();
+        Date end = new Date();
+        Date entry = new Date();
         try {
             start = new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
             end = new SimpleDateFormat("dd/MM/yyyy").parse(dueDate);

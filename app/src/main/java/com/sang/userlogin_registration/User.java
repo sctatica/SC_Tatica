@@ -25,8 +25,8 @@ public class User {
         this.coverImage = "";
         this.userID = userID;
         this.birthday = "";
-        this.timeWork = "0 hour(s)";
-        this.rank = "Bronze";
+        this.timeWork = "0";
+        this.rank = "Newbie";
         this.friends = new ArrayList<>();
     }
 

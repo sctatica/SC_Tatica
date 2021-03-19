@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:src="@drawable/tip0_image"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"/>
+
+    <TextView
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/SC_color"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/tip0.1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:fontFamily="@font/montserrat"
+        android:padding="10dp"
+        android:text="@string/tip0.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

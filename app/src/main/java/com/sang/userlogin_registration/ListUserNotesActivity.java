@@ -106,6 +106,7 @@ public class ListUserNotesActivity extends AppCompatActivity {
                     case R.id.nav_note:
                         return true;
                     case R.id.nav_community:
+                        startActivity(new Intent(ListUserNotesActivity.this, CommunityActivity.class));
                         return true;
                     default:
                         break;

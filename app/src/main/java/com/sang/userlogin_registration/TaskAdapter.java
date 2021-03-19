@@ -48,7 +48,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!userTasks.get(position).isDoneStatus()) {
+                if (!userTasks.get(position).isDoneStatus() && holder.checkBox.isChecked()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context)
                             .setTitle("Have you finished " + userTasks.get(position).getName() + " task ?")
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -65,6 +65,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                                 public void onClick(DialogInterface dialog, int which) {
                                     //dismiss dialog
                                     dialog.dismiss();
+                                    holder.checkBox.setChecked(false);
                                 }
                             });
                     builder.create().show();
@@ -77,8 +78,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         //Get Task data:
         String taskName = String.valueOf(userTasks.get(position).getName());
-        String taskStartDate = String.valueOf(userTasks.get(position).getStartDate());
-        String taskDueDate = String.valueOf(userTasks.get(position).getDueDate());
+        String taskStartDate = String.valueOf(userTasks.get(position).getStartTime() + " - " + userTasks.get(position).getStartDate());
+        String taskDueDate = String.valueOf(userTasks.get(position).getDueTime() + " - "  + userTasks.get(position).getDueDate());
 
         //Set Views:
         holder.show_title.setText(taskName);

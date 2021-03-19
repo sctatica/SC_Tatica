@@ -67,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
     //Progress dialog:
     private ProgressDialog progressDialog;
 
-    //TODO: Get image:
+    //TODO: init variable to get image:
     //Path where images of user avatar and cover will be stored
     private String storagePath = "Users_Avatar_Cover_Images/";
 
@@ -138,7 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
                     txtShowEmail.setText(email);
                     txtShowPhone.setText(phone);
                     txtShowBirthday.setText(birthday);
-                    txtShowTimeWork.setText(timeWork);
+                    txtShowTimeWork.setText(String.valueOf(timeWork + " seconds"));
                     txtShowRank.setText(rank);
 
                     try {

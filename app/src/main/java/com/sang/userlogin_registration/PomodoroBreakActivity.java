@@ -1,24 +1,30 @@
 package com.sang.userlogin_registration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.protobuf.Internal;
 
 import java.util.Locale;
 
+import static com.sang.userlogin_registration.PomodoroFragment.OPTIONAL_BREAK_TIME;
+
 public class PomodoroBreakActivity extends AppCompatActivity {
 
-    private int seconds = 5;//s;
+    private int secondsBreak = 300;       // get from PomodoroFragment
     Animation rotate;
     FloatingActionButton play_break;
-    //Intent intent;
+    ImageView circle_break;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,38 +33,45 @@ public class PomodoroBreakActivity extends AppCompatActivity {
 
         rotate = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotation);
         play_break = findViewById(R.id.breakBtn);
+        circle_break = findViewById(R.id.circle_break);
 
-//        intent = getIntent();
-//        s = intent.getIntExtra("key",seconds);
 
         play_break.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                play_break.setVisibility(View.GONE);
-                runTimer();
+                // Animation
+                circle_break.startAnimation(rotate);
+                Intent gotoBreak = getIntent();
+                if (gotoBreak != null) {
+                    secondsBreak = gotoBreak.getIntExtra(OPTIONAL_BREAK_TIME, 0);
+                    if (secondsBreak != 0) {
+                        play_break.setVisibility(View.GONE);
+                        runTimer();
+                    }
+                }
             }
         });
     }
     private void runTimer() {
         final TextView textView = findViewById(R.id.time_break);
-        //seconds = s;
 
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                int minutes = (seconds % 3600) / 60;
-                int secs = seconds % 60;
+                int minutes = (secondsBreak % 3600) / 60;
+                int secs = secondsBreak % 60;
 
                 String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
                 textView.setText(time);
 
-                if (seconds == 0){
+                if (secondsBreak == 0){
+                    Toast.makeText(PomodoroBreakActivity.this,"Time's up!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
-                if (seconds > 0) {
-                    seconds--;
+                if (secondsBreak > 0) {
+                    secondsBreak--;
                 }
                 handler.postDelayed(this,1000);
             }

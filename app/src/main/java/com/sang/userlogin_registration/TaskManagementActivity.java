@@ -63,6 +63,7 @@ public class TaskManagementActivity extends AppCompatActivity {
                         startActivity(new Intent(TaskManagementActivity.this, ListUserNotesActivity.class));
                         return true;
                     case R.id.nav_community:
+                        startActivity(new Intent(TaskManagementActivity.this, CommunityActivity.class));
                         return true;
                     default:
                         break;

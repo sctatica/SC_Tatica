@@ -27,7 +27,7 @@
     <string name="action_delete">Delete Task</string>
     <string name="action_archive">Finish Task</string>
     <string name="today_tab">Today\'s task</string>
-    <string name="pomodoro_tab">PiTime</string>
+    <string name="pomodoro_tab">Tatica Time</string>
     <string name="today_s_task">Today\'s task</string>
     <string name="you_will">you will work in</string>
     <string name="hour">hours</string>
@@ -51,6 +51,15 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="tip0.1">"Hey! Don't skip breakfast" </string>
+    <string name="tip0.2"> Do you know students who eat a healthy breakfast
+        tend to have better concentration than students who skip breakfast altogether?</string>
+
+    <string name="tip1.1">"Eggs are a good brain food" </string>
+    <string name="tip1.2">Eggs contain vitamin B12 – which converts glucose into energy – and a nutrient called choline,
+        which is linked to good memory.</string>
+
+    <string name="tip2.1">"Drinking water increases your concentration" </string>
+    <string name="tip2.2">Water provides the brain with the electrical it needs for all its function,
+        including thought and memory processes.</string>
 </resources>

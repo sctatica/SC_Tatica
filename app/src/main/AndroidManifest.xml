@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UserLogin_Registration">
-        <activity android:name=".FirstTimeActivity"></activity>
+        <activity android:name=".FullTips.FullTipsActivity"></activity>
+        <activity android:name=".CommunityActivity"></activity>
+        <activity android:name=".SearchUsersActivity" />
+        <activity android:name=".FirstTimeActivity" />
         <activity android:name=".ListUserNotesActivity" />
         <activity android:name=".PomodoroBreakActivity" />
         <activity android:name=".NoteInPomodroActivity" />

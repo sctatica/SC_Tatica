@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:contentPadding="5dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/tips_image"
+                android:src="@drawable/tip0_image"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"/>
+            <TextView
+                android:layout_gravity="start"
+                android:id="@+id/tips_type"
+                android:text="Food"
+                android:textColor="@color/SC_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/tips_title"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/SC_color"
+            android:gravity="center"
+            android:text="@string/tip0.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tips_description"
+            android:layout_width="373dp"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/tip0.2" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+</LinearLayout>

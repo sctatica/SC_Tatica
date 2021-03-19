@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.sang.userlogin_registration.FullTips.FullTipsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -140,9 +141,11 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_otherUsers:
-                        Toast.makeText(HomeActivity.this, "Other Users Selected", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(HomeActivity.this, SearchUsersActivity.class));
                         break;
                     case R.id.nav_rank:
+                        //TODO: fixed 03/19/2021
+                        startActivity(new Intent(HomeActivity.this, FullTipsActivity.class));
                         Toast.makeText(HomeActivity.this, "Rank Selected", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_help:

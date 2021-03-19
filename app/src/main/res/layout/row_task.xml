@@ -83,7 +83,7 @@
                         android:id="@+id/txtDueDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="25dp"
                         android:text="20/04/2021"
                         android:fontFamily="@font/montserrat"
                         />

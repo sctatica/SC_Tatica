@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -56,6 +57,11 @@ public class TaskInDurationFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        //TODO: Get current Date:
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        String currentDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
+
         //init firebase:
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -69,7 +75,7 @@ public class TaskInDurationFragment extends Fragment {
                     Task task = ds.getValue(Task.class);
                     if (task != null) {
                         if (task.getUserID().equals(user.getUid())) {
-                            if (!task.isDoneStatus())
+                            if (!task.isDoneStatus() && onDurationDate(task.getDueDate(), currentDate))
                                 taskList.add(task);
                         }
                     }
@@ -119,7 +125,7 @@ public class TaskInDurationFragment extends Fragment {
             final int position = viewHolder.getAdapterPosition();
             if (direction == ItemTouchHelper.LEFT) {
                 Task deletedTask = taskList.get(position);
-                Snackbar.make(viewHolder.itemView, "You have successfully deleted " + deletedTask.getName(), Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(viewHolder.itemView, "You have successfully deleted " + deletedTask.getName(), Snackbar.LENGTH_LONG)
                         .setAction("Undo", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -147,4 +153,15 @@ public class TaskInDurationFragment extends Fragment {
         }
     };
 
+    private boolean onDurationDate(String dueDate, String currentDate) {
+        Date end = new Date();
+        Date entry = new Date();
+        try {
+            end = new SimpleDateFormat("dd/MM/yyyy").parse(dueDate);
+            entry = new SimpleDateFormat("dd/MM/yyyy").parse(currentDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return (entry.equals(end) || entry.before(end));
+    }
 }
