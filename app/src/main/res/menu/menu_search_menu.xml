@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_logout"
-        android:title="@string/log_out"/>
+    <item android:id="@+id/action_friends"
+        android:title="View Friends"/>
 
+    <item android:id="@+id/action_otherUsers"
+        android:title="View Other users"/>
     <item
         android:id="@+id/action_search"
         android:title="Search"

@@ -1,238 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateTaskActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/SC_color2" />
-
-    <LinearLayout
-        android:id="@+id/card_view_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="5dp"
-            android:src="@mipmap/ic_launcher_round"
-            app:civ_border_width="2dp"
-            app:civ_border_color="@color/yellow"
-            android:layout_gravity="center" />
-
-        <TextView
-            android:id="@+id/txtUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="User Name"
-            android:layout_gravity="center"
-            android:fontFamily="@font/montserrat"
-            android:textSize="16sp"
-            />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/card_view_layout"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Name: "
-        android:textColor="@color/SC_color2"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/edtName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtName"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:fontFamily="@font/montserrat"
-        android:hint="New Task"
-        android:textSize="15sp" />
-
-    <LinearLayout
-        android:id="@+id/priority_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtName"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txtPriority"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:fontFamily="@font/montserrat"
-            android:text="Priority: "
-            android:textColor="@color/SC_color2"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinnerPriorities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/priority_layout"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Time set: "
-        android:textColor="@color/SC_color2"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
     <RelativeLayout
-        android:id="@+id/StartTimeParent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtTime"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/start_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="Start date: "
-            android:textColor="#00BFA5"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/SC_color2">
+        </com.google.android.material.appbar.MaterialToolbar>
 
-        <LinearLayout
-            android:id="@+id/displayStartDateParent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/start_date"
-            android:layout_marginTop="10dp">
+        <ImageView
+            android:layout_marginTop="60dp"
+            android:id="@+id/image_create_task"
+            android:src="@drawable/undraw_add_task"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="200dp"
+            android:padding="20dp">
+
+
+
+            <LinearLayout
+                android:id="@+id/card_view_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" />
+
 
             <TextView
-                android:id="@+id/txtStartTime"
-                android:layout_width="100dp"
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
+                android:layout_below="@+id/card_view_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/montserrat"
-                android:hint="HH : mm"
+                android:text="Name: "
+                android:textColor="@color/SC_color2"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtName"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/montserrat"
+                android:hint="New Task"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/txtStartDate"
-                android:layout_width="120dp"
+            <LinearLayout
+                android:id="@+id/priority_layout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
+                android:layout_below="@+id/edtName"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtPriority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Priority: "
+                    android:textColor="@color/SC_color2"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinnerPriorities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priority_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/montserrat"
-                android:hint="dd/mm/yyyy"
+                android:text="Time set: "
+                android:textColor="@color/SC_color2"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/StartTimeParent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtTime"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Start date: "
+                    android:textColor="#00BFA5"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/displayStartDateParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/start_date"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/txtStartTime"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="HH : mm"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txtStartDate"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="dd/mm/yyyy"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/DueTimeParent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/StartTimeParent"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/due_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Due date: "
+                    android:textColor="#00BFA5"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/displayDueDateParent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/due_date"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/txtDueTime"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="HH : mm"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txtDueDate"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35dp"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="dd/mm/yyyy"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtShortDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/DueTimeParent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Short description: "
+                android:textColor="@color/SC_color2"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtShortDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtShortDesc"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/montserrat"
+                android:hint="This is a new task"
                 android:textSize="15sp" />
-        </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCreateTask"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Create Task"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/edtShortDesc" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/DueTimeParent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/StartTimeParent"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/due_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="Due date: "
-            android:textColor="#00BFA5"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/displayDueDateParent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/due_date"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:id="@+id/txtDueTime"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:fontFamily="@font/montserrat"
-                android:hint="HH : mm"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/txtDueDate"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:fontFamily="@font/montserrat"
-                android:hint="dd/mm/yyyy"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/txtShortDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/DueTimeParent"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Short description: "
-        android:textColor="@color/SC_color2"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/edtShortDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtShortDesc"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:fontFamily="@font/montserrat"
-        android:hint="This is a new task"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/btnCreateTask"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edtShortDesc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#FF6E40"
-        android:fontFamily="@font/montserrat"
-        android:text="Create Task" />
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

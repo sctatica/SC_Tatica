@@ -15,41 +15,22 @@
     <LinearLayout
         android:id="@+id/local_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:layout_above="@+id/nav_bottomView">
 
         <Spinner
-            android:id="@+id/spinner_local"
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_local"
+            android:layout_marginTop="-5dp"
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/global_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/nav_bottomView"
-        android:layout_below="@id/local_layout"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-
-        <Spinner
-            android:id="@+id/spinner_global"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_global"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

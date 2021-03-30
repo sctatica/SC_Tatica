@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoteInPomodroActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Feedbacks"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/feedbackData"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:gravity="top"
+            android:hint="We are glad to hear your feedbacks"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minHeight="500dp"
+            android:padding="20dp" />
+
+        <Button
+            android:id="@+id/sendFeedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="send" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,42 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.sang.userlogin_registration"
+    package="com.sang.sc_tatica"
     android:screenOrientation="portrait"
     tools:ignore="LockedOrientationActivity">
+
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/sc_logo_begin"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/sc_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UserLogin_Registration">
-        <activity android:name=".FullTips.FullTipsActivity"></activity>
-        <activity android:name=".CommunityActivity"></activity>
-        <activity android:name=".SearchUsersActivity" />
-        <activity android:name=".FirstTimeActivity" />
-        <activity android:name=".ListUserNotesActivity" />
-        <activity android:name=".PomodoroBreakActivity" />
-        <activity android:name=".NoteInPomodroActivity" />
-        <activity android:name=".EditTaskActivity" />
-        <activity android:name=".TaskManagementActivity" />
-        <activity android:name=".CreateTaskActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name="com.sang.sc_tatica.FeedbackActivity"></activity>
+        <activity
+            android:name="com.sang.sc_tatica.Ranks.RankActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.FullTips.FullTipsActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.CommunityActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.SearchUsersActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.FirstTimeActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.ListUserNotesActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.PomodoroBreakActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.NoteInPomodroActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.EditTaskActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.TaskManagementActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.CreateTaskActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.ProfileActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.HomeActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterAccountActivity" />
-        <activity android:name=".LoginAccountActivity">
+        <activity
+            android:name="com.sang.sc_tatica.RegisterAccountActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="com.sang.sc_tatica.LoginAccountActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +100,10 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:resource="@array/preloaded_fonts" /> <!-- Addition Image Crop -->
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@
         android:layout_marginTop="560dp"
         android:layout_marginEnd="60dp"
         android:src="@drawable/ic_baseline_add_24"
-        app:tint="@color/SC_color5" />
+        app:tint="@color/SC_color" />
 
     <ImageView
         android:id="@+id/sub"
@@ -28,7 +28,7 @@
         android:layout_marginTop="560dp"
         android:layout_marginStart="60dp"
         android:src="@drawable/ic_subtract"
-        app:tint="@color/SC_color5" />
+        app:tint="@color/SC_color" />
 
     <FrameLayout
         android:id="@+id/framelayout"

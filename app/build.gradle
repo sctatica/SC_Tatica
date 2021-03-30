@@ -51,6 +51,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.2'
     implementation 'androidx.navigation:navigation-ui:2.3.2'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
     // Glide library
     implementation 'com.github.bumptech.glide:glide:4.11.0'

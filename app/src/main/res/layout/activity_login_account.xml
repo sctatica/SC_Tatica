@@ -69,6 +69,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat">
@@ -89,6 +90,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat">
@@ -135,28 +137,15 @@
         android:id="@+id/google"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
         android:layout_marginBottom="135dp"
         android:backgroundTint="@color/red"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/google"
         android:textAllCaps="false" />
 
-    <Button
-        android:id="@+id/facebook"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="135dp"
-        android:backgroundTint="@color/facebook_color"
-        android:backgroundTintMode="add"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/facebook"
-        android:textAllCaps="false" />
+
 
     <TextView
         android:id="@+id/create_account"

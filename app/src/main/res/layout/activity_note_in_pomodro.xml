@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".NoteInPomodroActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="@string/take_note"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:maxLines="1"
-        android:id="@+id/title_in_note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:hint="@string/title"
-        android:padding="15dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="@string/take_note"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/noteData"
-        style="@style/Widget.AppCompat.EditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:gravity="top"
-        android:hint="@string/write_something"
-        android:inputType="textMultiLine|textCapSentences"
-        android:minHeight="500dp"
-        android:padding="20dp" />
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/title_in_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:hint="@string/title"
+            android:padding="15dp" />
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/save" />
+        <EditText
+            android:id="@+id/noteData"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:gravity="top"
+            android:hint="@string/write_something"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minHeight="500dp"
+            android:padding="20dp" />
 
-    <Button
-        android:id="@+id/showNote"
-        android:text="@string/show_notes"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/save" />
+
+        <Button
+            android:id="@+id/showNote"
+            android:text="@string/show_notes"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/SC_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -7,168 +7,138 @@
     android:orientation="vertical"
     tools:context=".LoginAccountActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="194dp"
-        android:layout_height="45dp"
+    <RelativeLayout
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="161dp"
-        android:layout_marginEnd="54dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/account"
-        android:textColor="@color/SC_color"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="192dp" />
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="170dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="50dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/sc_logo"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="106dp" />
-
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="164dp"
-        android:layout_height="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="82dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/create"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="163dp" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
-        android:hint="@string/input_username"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/r_username"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="194dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="161dp"
+            android:layout_marginEnd="54dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/account"
+            android:textColor="@color/SC_color"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="192dp" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="170dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sc_logo"
+            tools:layout_editor_absoluteX="55dp"
+            tools:layout_editor_absoluteY="106dp" />
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="164dp"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="82dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/create"
+            tools:layout_editor_absoluteX="170dp"
+            tools:layout_editor_absoluteY="163dp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat">
+            android:layout_marginTop="240dp"
+            android:hint="@string/input_username"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp">
 
-        </com.google.android.material.textfield.TextInputEditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/r_username"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="310dp"
-        android:hint="@string/input_password"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        app:passwordToggleEnabled="true">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/r_password"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat">
+            android:layout_marginTop="310dp"
+            android:hint="@string/input_password"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            app:passwordToggleEnabled="true">
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/r_password"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:hint="@string/input_password"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        app:passwordToggleEnabled="true">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/confirm_password"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirm_password_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat">
+            android:layout_marginTop="380dp"
+            android:hint="@string/confirm_password"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            app:passwordToggleEnabled="true">
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirm_password"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat">
 
-
-    <Button
-
-        android:id="@+id/register"
-        android:layout_width="315dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="450dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/register"
-        android:textAllCaps="false" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="220dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/use_social_networks_signup"
-        android:textSize="12sp" />
-
-    <Button
-        android:id="@+id/r_google"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="140dp"
-        android:backgroundTint="@color/red"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/google"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/r_facebook"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="140dp"
-        android:backgroundTint="@color/facebook_color"
-        android:backgroundTintMode="add"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/facebook"
-        android:textAllCaps="false" />
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
+        <Button
+            android:layout_below="@id/confirm_password_layout"
+            android:id="@+id/register"
+            android:layout_width="315dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/register"
+            android:textAllCaps="false" />
 
-
+    </RelativeLayout>
 
 
 </RelativeLayout>

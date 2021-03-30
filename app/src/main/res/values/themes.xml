@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.UserLogin_Registration" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/montserrat</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/SC_color</item>
         <item name="colorPrimaryVariant">@color/SC_color3</item>

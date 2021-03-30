@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
     >
 
     <LinearLayout
@@ -21,8 +22,7 @@
             android:src="@mipmap/ic_person_icon"
             android:padding="5dp"
             app:civ_border_width="2dp"
-            app:civ_border_color="@color/yellow"
-            />
+            app:civ_border_color="@color/yellow" />
 
         <LinearLayout
             android:layout_marginStart="5dp"
@@ -30,47 +30,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/txtName"
+            <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Name"
-                android:fontFamily="@font/montserrat"
-                android:textColor="@color/SC_color2"
-                />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="end|center"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/imgRank"
+                    android:src="@drawable/rank_demo"
+                    />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/SC_color2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/txtEmail"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Email"
-                android:fontFamily="@font/montserrat"
-                android:textColor="@color/SC_color2"
-                />
-
-            <TextView
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="12dp"
                 android:id="@+id/txtTimeWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Work Hours"
                 android:fontFamily="@font/montserrat"
                 android:textColor="#FFA000"
-                />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView
+    <Button
+        android:id="@+id/btnAddFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Friend"
+        android:layout_gravity="center|end"
         android:layout_marginEnd="5dp"
-        android:layout_gravity="end|center"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:id="@+id/imgRank"
-        android:src="@drawable/rank_demo"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:textSize="10sp"
         />
 
 </com.google.android.material.card.MaterialCardView>

@@ -24,6 +24,8 @@
     <string name="drawer_close">drawer_close</string>
     <string name="task_in_duration">Task In Duration</string>
     <string name="task_end_duration">Task End Duration</string>
+    <string name="in_duration">In Duration</string>
+    <string name="end_duration">End Duration</string>
     <string name="action_delete">Delete Task</string>
     <string name="action_archive">Finish Task</string>
     <string name="today_tab">Today\'s task</string>
@@ -43,6 +45,7 @@
         <item>50/10</item>
         <item>45/15</item>
         <item>40/20</item>
+        <item>5/5 (test)</item>
     </string-array>
     <string name="title_activity_first_time">FirstTimeActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -62,4 +65,9 @@
     <string name="tip2.1">"Drinking water increases your concentration" </string>
     <string name="tip2.2">Water provides the brain with the electrical it needs for all its function,
         including thought and memory processes.</string>
+
+    <string name="bronze_rank">Bronze Rank</string>
+    <string name="this_is_the_description_for_specific_rank">This is the description for specific rank.</string>
+    <string name="userfriends">Friends</string>
+    <string name="otherusers">Other Users</string>
 </resources>
