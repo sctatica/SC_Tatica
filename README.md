@@ -4,12 +4,12 @@
 
 # Prerequisites
 * Before continue, ensure you meet the following requirements:
-	* The version of android studio should be the latest version.
+	* Download and setup the latest version of Android Studio.
+	* Set up the emulator with Android 10 (minimum Android 6.0 API 23), and 6.3 inches screen for best experience.
 	* The minimum API level supported by our application is API 23 (Marshmallow).
-	* Set up the emulator with 6.3" for best experience.
 	
 # Installation
-	Download the source code in .rar, extract and run with your android studio. Enjoys it!
+	Download the source code in zip, extract it and run the folder SC_Tatica-master in Android Studio on the emulator or physical device.
 
 # Technologies
 * Tatica project is created with:
