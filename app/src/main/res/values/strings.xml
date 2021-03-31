@@ -29,7 +29,7 @@
     <string name="action_delete">Delete Task</string>
     <string name="action_archive">Finish Task</string>
     <string name="today_tab">Today\'s task</string>
-    <string name="pomodoro_tab">Tatica Time</string>
+    <string name="pomodoro_tab">Pomodoro</string>
     <string name="today_s_task">Today\'s task</string>
     <string name="you_will">you will work in</string>
     <string name="hour">hours</string>
