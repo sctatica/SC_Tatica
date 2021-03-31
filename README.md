@@ -9,7 +9,7 @@
 	* The minimum API level supported by our application is API 23 (Marshmallow).
 	
 # Installation
-	Download the source code in zip, extract it and run the folder SC_Tatica-master in Android Studio on the emulator or physical device.
+	Download the source code repository in zip, extract it and run the folder SC_Tatica-master in Android Studio on the emulator or physical device.
 
 # Technologies
 * Tatica project is created with:
