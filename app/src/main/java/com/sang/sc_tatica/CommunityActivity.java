@@ -131,7 +131,7 @@ public class CommunityActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         // show Data
                         ArrayList<Event> events = new ArrayList<>();
-                        for (DocumentSnapshot document : task.getResult()){
+                        for (DocumentSnapshot document : task.getResult()) {
                             if (position == 0) {
                                 if (document.getString("isLocal").equals("true")) {
                                     Event event = document.toObject(Event.class);

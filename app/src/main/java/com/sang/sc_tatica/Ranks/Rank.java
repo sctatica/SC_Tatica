@@ -14,7 +14,7 @@ public class Rank {
         this.rank_image = rank_image;
     }
 
-    public static final Rank[] ranksDetails ={
+    public static final Rank[] ranksDetails = {
             new Rank("Bronze Rank", "  - Learn about local / local short-term events and classes organized by the founding group.\n" +
                     "  - Choosing to become a financial donor (by accumulating time and converting money from sponsors)", R.drawable.rank_1_image),
             new Rank("Silver Rank", "  - Unlock to join or become a collaborator for short-term events and classes held locally / domestically organized by the founding team.\n" +

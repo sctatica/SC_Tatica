@@ -29,7 +29,7 @@ public class PomodoroBreakActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pomodoro_break);
 
-        rotate = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotation);
+        rotate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotation);
         play_break = findViewById(R.id.breakBtn);
         circle_break = findViewById(R.id.circle_break);
 
@@ -49,6 +49,7 @@ public class PomodoroBreakActivity extends AppCompatActivity {
             }
         });
     }
+
     private void runTimer() {
         final TextView textView = findViewById(R.id.time_break);
 
@@ -62,14 +63,14 @@ public class PomodoroBreakActivity extends AppCompatActivity {
                 String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
                 textView.setText(time);
 
-                if (secondsBreak == 0){
+                if (secondsBreak == 0) {
                     finish();
                 }
 
                 if (secondsBreak > 0) {
                     secondsBreak--;
                 }
-                handler.postDelayed(this,1000);
+                handler.postDelayed(this, 1000);
             }
         });
 

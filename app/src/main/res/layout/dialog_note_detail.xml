@@ -28,8 +28,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/note_image"
-            android:layout_marginTop="-10dp"
-            />
+            android:layout_marginTop="-10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,35 +57,34 @@
                 android:layout_marginBottom="15dp"
                 android:textSize="15sp"
                 android:fontFamily="@font/montserrat"
-                android:text="Description "
-                />
+                android:text="Description " />
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/btnLayout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:orientation="horizontal">-->
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/btnLayout"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:orientation="horizontal">-->
 
-<!--            <Button-->
-<!--                android:id="@+id/btnLeave"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:fontFamily="@font/montserrat"-->
-<!--                android:text="Leave"-->
-<!--                />-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnLeave"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:fontFamily="@font/montserrat"-->
+        <!--                android:text="Leave"-->
+        <!--                />-->
 
-<!--            <Button-->
-<!--                android:id="@+id/btnEdit"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:fontFamily="@font/montserrat"-->
-<!--                android:text="Edit Note" />-->
-<!--        </LinearLayout>-->
+        <!--            <Button-->
+        <!--                android:id="@+id/btnEdit"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:fontFamily="@font/montserrat"-->
+        <!--                android:text="Edit Note" />-->
+        <!--        </LinearLayout>-->
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

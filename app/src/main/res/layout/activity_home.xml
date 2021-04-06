@@ -15,8 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/SC_color2"
-            />
+            android:background="@color/SC_color2" />
 
         <!--   Bottom Navigation: show menu-->
         <com.google.android.material.tabs.TabLayout
@@ -24,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
-            android:layout_marginTop="-2dp"
-            />
+            android:layout_marginTop="-2dp" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"

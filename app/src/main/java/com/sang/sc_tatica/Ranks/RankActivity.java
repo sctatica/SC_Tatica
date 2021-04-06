@@ -42,7 +42,7 @@ public class RankActivity extends AppCompatActivity {
                 rank_number = 0;
                 bundle.putInt(WHICH_RANK, rank_number);
                 rankDetailDialog.setArguments(bundle);
-                rankDetailDialog.show((RankActivity.this).getSupportFragmentManager(),"rank");
+                rankDetailDialog.show((RankActivity.this).getSupportFragmentManager(), "rank");
             }
         });
 
@@ -55,7 +55,7 @@ public class RankActivity extends AppCompatActivity {
                 rank_number = 1;
                 bundle.putInt(WHICH_RANK, rank_number);
                 rankDetailDialog.setArguments(bundle);
-                rankDetailDialog.show((RankActivity.this).getSupportFragmentManager(),"rank");
+                rankDetailDialog.show((RankActivity.this).getSupportFragmentManager(), "rank");
             }
         });
 
@@ -67,7 +67,7 @@ public class RankActivity extends AppCompatActivity {
                 rank_number = 2;
                 bundle.putInt(WHICH_RANK, rank_number);
                 rankDetailDialog.setArguments(bundle);
-                rankDetailDialog.show((RankActivity.this).getSupportFragmentManager(),"rank");
+                rankDetailDialog.show((RankActivity.this).getSupportFragmentManager(), "rank");
             }
         });
     }

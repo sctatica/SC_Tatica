@@ -102,6 +102,7 @@ public class TaskInDurationFragment extends Fragment {
                 adapterTasks = new TaskAdapter(getActivity(), taskList);
                 recyclerView.setAdapter(adapterTasks);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -119,6 +120,7 @@ public class TaskInDurationFragment extends Fragment {
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
+
         @Override
         public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
             final int position = viewHolder.getAdapterPosition();

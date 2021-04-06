@@ -7,7 +7,7 @@
     <ImageView
         android:src="@drawable/tip0_image"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"/>
+        android:layout_height="300dp" />
 
     <TextView
         android:fontFamily="@font/montserrat"
@@ -15,12 +15,13 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/tip0.1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
     <TextView
         android:fontFamily="@font/montserrat"
         android:padding="10dp"
         android:text="@string/tip0.2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

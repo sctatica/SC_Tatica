@@ -53,7 +53,7 @@ public class DonateDialog extends DialogFragment {
     private double TimeConverted;
     private double MoneyConverted;
 
-    public interface EventObject{
+    public interface EventObject {
         void onCallBack(Event event);
     }
 
@@ -117,10 +117,9 @@ public class DonateDialog extends DialogFragment {
                 btnDonate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (edtConvertTime.getText().toString().equals("")){
+                        if (edtConvertTime.getText().toString().equals("")) {
                             Toast.makeText(getActivity(), "Please fulfil your work time to donate", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
                             //TODO: TimeDonate and MoneyDonate:
                             getEvent(event.getEventID(), new EventObject() {
                                 @Override
@@ -177,7 +176,7 @@ public class DonateDialog extends DialogFragment {
         btnDonate = view.findViewById(R.id.btnDonate);
     }
 
-    private void getEvent(String eventID, EventObject eventObject){
+    private void getEvent(String eventID, EventObject eventObject) {
         firestore.collection("Events")
                 .document(eventID)
                 .get()

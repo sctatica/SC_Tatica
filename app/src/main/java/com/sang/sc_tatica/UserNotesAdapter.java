@@ -32,7 +32,7 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
     public UsersNotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflate layout
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.model_user_notes,parent,false);
+                .inflate(R.layout.model_user_notes, parent, false);
 
         UsersNotesViewHolder viewHolder_userNotes = new UsersNotesViewHolder(itemView);
         // handle item clicks
@@ -45,7 +45,7 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
                 // show data in toast when click
                 String title = modelUserNotes.get(position).getTitle();
                 String description = modelUserNotes.get(position).getDescription();
-                Toast.makeText(listActivity,title+"" +description,Toast.LENGTH_LONG).show();
+                Toast.makeText(listActivity, title + "" + description, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -53,11 +53,11 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
                 // this will be called when user long click item
                 AlertDialog.Builder builder = new AlertDialog.Builder(listActivity);
                 // options to display in dialog
-                String[] options = {"Edit","Delete"};
+                String[] options = {"Edit", "Delete"};
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0){
+                        if (which == 0) {
                             // update is clicked
                             // get data
                             String id = modelUserNotes.get(position).getId();
@@ -65,7 +65,7 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
                             String description = modelUserNotes.get(position).getDescription();
 
                             // intent to start activity
-                            Intent intent = new Intent(listActivity, NoteInPomodroActivity.class );
+                            Intent intent = new Intent(listActivity, NoteInPomodroActivity.class);
 
                             // put data in intent
                             intent.putExtra("pId", id);
@@ -75,8 +75,7 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
                             // start activity
                             listActivity.startActivity(intent);
                         }
-                        if (which == 1)
-                        {
+                        if (which == 1) {
                             // delete
                             listActivity.deleteNote(position);
                         }
@@ -100,7 +99,7 @@ public class UserNotesAdapter extends RecyclerView.Adapter<UsersNotesViewHolder>
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(NOTE_KEY, modelUserNotes.get(position));
                 dialog.setArguments(bundle);
-                dialog.show(((AppCompatActivity)v.getContext()).getSupportFragmentManager(), "Task Detail Dialog");
+                dialog.show(((AppCompatActivity) v.getContext()).getSupportFragmentManager(), "Task Detail Dialog");
             }
         });
     }

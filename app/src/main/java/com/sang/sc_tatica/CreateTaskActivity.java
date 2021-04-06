@@ -45,7 +45,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     private EditText edtName;
     private Spinner spinnerPriorities;
     private TextView txtStartTime, txtStartDate,
-                     txtDueTime, txtDueDate;
+            txtDueTime, txtDueDate;
     private EditText edtShortDesc;
     private Button btnCreateTask;
 
@@ -100,8 +100,10 @@ public class CreateTaskActivity extends AppCompatActivity {
                     userID = user_ID;
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
         //TODO: Set up Priority:
@@ -194,11 +196,9 @@ public class CreateTaskActivity extends AppCompatActivity {
 
                 if (name.equals("")) {
                     Toast.makeText(CreateTaskActivity.this, "Please enter name of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (!date_end.after(date_start)) {
+                } else if (!date_end.after(date_start)) {
                     Toast.makeText(CreateTaskActivity.this, "Due date should be after Start date", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     //Create a new Task in firebase:
                     firebaseDatabase = FirebaseDatabase.getInstance();
                     databaseReference = firebaseDatabase.getReference("Tasks");

@@ -58,7 +58,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
         // update
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
+        if (bundle != null) {
             // Update
             mSaveBtn.setText("Update");
 
@@ -70,8 +70,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
             // set data
             mTitleEt.setText(pTitle);
             mDescriptionEt.setText(pDescription);
-        }
-        else{
+        } else {
             // new data
             mSaveBtn.setText("Save");
         }
@@ -87,7 +86,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle1 = getIntent().getExtras();
-                if (bundle != null){
+                if (bundle != null) {
                     // update
                     String id = pId;
                     String title = mTitleEt.getText().toString().trim();
@@ -99,9 +98,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                         Toast.makeText(NoteInPomodroActivity.this, "Please enter the description", Toast.LENGTH_SHORT).show();
                     else
                         uploadData(id, title, description);
-                }
-                else
-                {
+                } else {
                     // adding new data
                     // input data
                     String title = mTitleEt.getText().toString().trim();
@@ -151,7 +148,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                 // called when fail update
                 pd.dismiss();
                 // get and show any error
-                Toast.makeText(NoteInPomodroActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoteInPomodroActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -176,7 +173,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         // this will be called when data is added successfully
                         pd.dismiss();
-                        Toast.makeText(NoteInPomodroActivity.this,"Uploaded successfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NoteInPomodroActivity.this, "Uploaded successfully", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -184,7 +181,7 @@ public class NoteInPomodroActivity extends AppCompatActivity {
                 // this will be called if there is any error when uploading
                 pd.dismiss();
                 // get and show error message
-                Toast.makeText(NoteInPomodroActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(NoteInPomodroActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });

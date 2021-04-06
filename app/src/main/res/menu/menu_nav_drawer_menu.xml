@@ -3,31 +3,31 @@
     <item
         android:title="Friends"
         android:id="@+id/nav_friends"
-        android:icon="@drawable/ic_other_user"/>
+        android:icon="@drawable/ic_other_user" />
 
     <item
         android:title="Ranks"
         android:id="@+id/nav_rank"
         android:iconTint="@color/black"
-        android:icon="@drawable/outline_military_tech_24"/>
+        android:icon="@drawable/outline_military_tech_24" />
 
     <item
         android:title="Tips"
         android:id="@+id/nav_tips"
-        android:icon="@drawable/ic_tips"/>
+        android:icon="@drawable/ic_tips" />
 
     <item
         android:title="Help"
         android:id="@+id/nav_help"
-        android:icon="@drawable/ic_help"/>
+        android:icon="@drawable/ic_help" />
 
     <item
         android:title="Feedback"
         android:id="@+id/nav_feedback"
-        android:icon="@drawable/ic_feedback"/>
+        android:icon="@drawable/ic_feedback" />
 
     <item
         android:title="About us"
         android:id="@+id/nav_about"
-        android:icon="@drawable/ic_about"/>
+        android:icon="@drawable/ic_about" />
 </menu>

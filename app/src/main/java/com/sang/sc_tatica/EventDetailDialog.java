@@ -80,8 +80,7 @@ public class EventDetailDialog extends DialogFragment {
                             dialog.show(getActivity().getSupportFragmentManager(), "Event Donate Dialog");
                         }
                     });
-                }
-                else {
+                } else {
                     btnDonate.setVisibility(View.GONE);
                 }
             }

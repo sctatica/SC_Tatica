@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import static com.sang.sc_tatica.EventDetailDialog.EVENT_KEY;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Event> eventsList;
@@ -55,7 +55,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(EVENT_KEY, eventsList.get(position));
                 dialog.setArguments(bundle);
-                dialog.show(((AppCompatActivity)context).getSupportFragmentManager(), "Event Detail Dialog");
+                dialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "Event Detail Dialog");
             }
         });
     }

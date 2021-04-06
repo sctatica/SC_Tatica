@@ -41,15 +41,16 @@ public class UsersNotesViewHolder extends RecyclerView.ViewHolder {
     }
 
     // interface for click listener
-    private  UsersNotesViewHolder.ClickListener mClickListener;
+    private UsersNotesViewHolder.ClickListener mClickListener;
 
-    public  interface ClickListener{
+    public interface ClickListener {
         void OnItemClick(View view, int position);
+
         void OnItemLongClick(View view, int position);
 
     }
 
-    public  void setOnClickListener(UsersNotesViewHolder.ClickListener clickListener){
-         mClickListener = clickListener;
+    public void setOnClickListener(UsersNotesViewHolder.ClickListener clickListener) {
+        mClickListener = clickListener;
     }
 }

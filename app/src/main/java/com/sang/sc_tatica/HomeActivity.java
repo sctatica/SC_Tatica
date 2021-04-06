@@ -130,8 +130,10 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
         nav_drawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -149,7 +151,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(HomeActivity.this, RankActivity.class));
                         break;
                     case R.id.nav_help:
-                        Toast.makeText(HomeActivity.this, "We are developing \n this function", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(HomeActivity.this, HelpActivity.class));
                         break;
                     case R.id.nav_feedback:
                         startActivity(new Intent(HomeActivity.this, FeedbackActivity.class));
@@ -170,10 +172,12 @@ public class HomeActivity extends AppCompatActivity {
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
+
         @Override
         public int getCount() {
             return 2;
         }
+
         @Override
         public Fragment getItem(int position) {
             switch (position) {
@@ -184,6 +188,7 @@ public class HomeActivity extends AppCompatActivity {
             }
             return null;
         }
+
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
@@ -196,13 +201,13 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private void checkUserStatus(){
+    private void checkUserStatus() {
         // get current user
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null){
+        if (user != null) {
             // user signed in and stay here
-            Toast.makeText(this,"You logged in as " + user.getEmail(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You logged in as " + user.getEmail(), Toast.LENGTH_SHORT).show();
             finish();
         } else {
             // user not signed in, goto main activity
@@ -216,7 +221,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // get item id
         super.onOptionsItemSelected(item);
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_logout:
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                 firebaseAuth.signOut();

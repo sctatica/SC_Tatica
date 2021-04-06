@@ -16,7 +16,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
@@ -26,16 +26,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         }, 2000);
     }
 
-    private void checkUserStatus(){
+    private void checkUserStatus() {
         // get current user
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null){
+        if (user != null) {
             //user signed in, goto Home activity
             startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
-        }
-        else
-        {
+        } else {
             // user not signed in, goto Main activity
             startActivity(new Intent(SplashScreenActivity.this, LoginAccountActivity.class));
         }

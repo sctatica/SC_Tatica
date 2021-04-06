@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 import static com.sang.sc_tatica.TaskDetailDialog.TASK_KEY;
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     public static final String EDIT_TASK = "Edit Task";
 
@@ -113,7 +113,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(TASK_KEY, userTasks.get(position));
                 dialog.setArguments(bundle);
-                dialog.show(((AppCompatActivity)context).getSupportFragmentManager(), "Task Detail Dialog");
+                dialog.show(((AppCompatActivity) context).getSupportFragmentManager(), "Task Detail Dialog");
             }
         });
     }

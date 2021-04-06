@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class OtherUsersAdapter extends RecyclerView.Adapter<OtherUsersAdapter.ViewHolder>{
+public class OtherUsersAdapter extends RecyclerView.Adapter<OtherUsersAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<User> usersList;

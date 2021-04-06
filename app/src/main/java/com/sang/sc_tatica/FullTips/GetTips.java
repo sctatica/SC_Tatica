@@ -8,7 +8,8 @@ public class GetTips {
     String imageUrl;
     String description;
 
-    public GetTips(){}
+    public GetTips() {
+    }
 
     public GetTips(String type, String title, String image, String description) {
         this.type = type;

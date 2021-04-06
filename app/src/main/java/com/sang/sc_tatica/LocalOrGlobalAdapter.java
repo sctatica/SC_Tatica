@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class LocalOrGlobalAdapter extends ArrayAdapter<LocalOrGlobal> {
 
-    public LocalOrGlobalAdapter(Context context, ArrayList<LocalOrGlobal> localOrGlobalArrayList){
+    public LocalOrGlobalAdapter(Context context, ArrayList<LocalOrGlobal> localOrGlobalArrayList) {
         super(context, 0, localOrGlobalArrayList);
     }
 

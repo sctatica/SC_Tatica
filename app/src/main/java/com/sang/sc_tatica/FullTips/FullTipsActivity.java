@@ -89,7 +89,7 @@ public class FullTipsActivity extends AppCompatActivity {
 
                 // call when data is retrieved
                 pd.dismiss();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     GetTips getTips = new GetTips();
 
@@ -115,10 +115,10 @@ public class FullTipsActivity extends AppCompatActivity {
 
     }
 
-    private void clearAll(){
-        if (TipsList != null){
+    private void clearAll() {
+        if (TipsList != null) {
             TipsList.clear();
-            if (fullTipsRecyclerViewAdapter != null){
+            if (fullTipsRecyclerViewAdapter != null) {
                 fullTipsRecyclerViewAdapter.notifyDataSetChanged();
             }
         }

@@ -70,8 +70,7 @@ public class RegisterAccountActivity extends AppCompatActivity {
                     r_password.setError("Password length at least 6 characters");
                     r_password.setFocusable(true);
 
-                }
-                else if(!pass.equals(pass_c)){
+                } else if (!pass.equals(pass_c)) {
                     pass_confirm.setError("Not match");
                 } else {
                     registerUser(email, pass);
@@ -118,7 +117,7 @@ public class RegisterAccountActivity extends AppCompatActivity {
     }
 
     //Create a new user email and userID:
-    private void createUser(FirebaseUser user){
+    private void createUser(FirebaseUser user) {
         //TODO: Get user email and userID from auth:
         String email = user.getEmail();
         String userID = user.getUid();

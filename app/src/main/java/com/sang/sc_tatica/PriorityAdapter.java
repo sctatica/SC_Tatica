@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class PriorityAdapter extends ArrayAdapter<Priority> {
-    public PriorityAdapter(Context context, ArrayList<Priority> priorityList){
+    public PriorityAdapter(Context context, ArrayList<Priority> priorityList) {
         super(context, 0, priorityList);
     }
 

@@ -86,10 +86,9 @@ public class LoginAccountActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() == 0){
+                if (s.length() == 0) {
                     emailEdT.setError("Username must not empty");
-                }
-                else{
+                } else {
                     emailEdT.setError(null);
                 }
             }
@@ -109,10 +108,9 @@ public class LoginAccountActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() == 0){
+                if (s.length() == 0) {
                     passEdT.setError("Password must not empty");
-                }
-                else{
+                } else {
                     passEdT.setError(null);
                 }
             }
@@ -130,14 +128,13 @@ public class LoginAccountActivity extends AppCompatActivity {
                 // input data
                 String email = emailEdT.getText().toString();
                 String pass = passEdT.getText().toString().trim();
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     // invalid email pattern set error
                     emailEdT.setError("Invalid Error");
                     emailEdT.setFocusable(true);
-                }
-                else{
+                } else {
                     // login email, pass
-                    loginUser(email,pass);
+                    loginUser(email, pass);
                 }
             }
         });
@@ -192,7 +189,7 @@ public class LoginAccountActivity extends AppCompatActivity {
         emailEdT.setMinEms(16);
 
         linearLayout.addView(emailEdT);
-        linearLayout.setPadding(12,10,10,10);
+        linearLayout.setPadding(12, 10, 10, 10);
         builder.setView(linearLayout);
 
         // button recover
@@ -211,7 +208,7 @@ public class LoginAccountActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        
+
         //show dialog
         builder.create().show();
     }
@@ -220,19 +217,18 @@ public class LoginAccountActivity extends AppCompatActivity {
         progressDialog.setMessage("Sending email...");
         progressDialog.show();
         mAuth.sendPasswordResetEmail(email)
-           .addOnCompleteListener(new OnCompleteListener<Void>() {
-               @Override
-               public void onComplete(@NonNull Task<Void> task) {
-                   if (task.isSuccessful()){
-                       progressDialog.dismiss();
-                       Toast.makeText(LoginAccountActivity.this,"A recover instruction sent to your email", Toast.LENGTH_SHORT).show();
-                   }
-                   else{
-                       progressDialog.dismiss();
-                       Toast.makeText(LoginAccountActivity.this,"Failed", Toast.LENGTH_SHORT).show();
-                   }
-               }
-           }).addOnFailureListener(new OnFailureListener() {
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginAccountActivity.this, "A recover instruction sent to your email", Toast.LENGTH_SHORT).show();
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginAccountActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 // get and show proper error message
@@ -245,11 +241,11 @@ public class LoginAccountActivity extends AppCompatActivity {
         // show progress dialog
         progressDialog.setMessage("Logging in...");
         progressDialog.show();
-        mAuth.signInWithEmailAndPassword(email,pass)
+        mAuth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             progressDialog.dismiss();
 
                             // Sign in successful
@@ -258,11 +254,10 @@ public class LoginAccountActivity extends AppCompatActivity {
                             // user logged in
                             startActivity(new Intent(LoginAccountActivity.this, HomeActivity.class));
                             finish();
-                        }
-                        else{
+                        } else {
                             progressDialog.dismiss();
                             // sign in fail, display a message to the user
-                            Toast.makeText(LoginAccountActivity.this, "Authentication failed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginAccountActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -270,7 +265,7 @@ public class LoginAccountActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
                 // error get and show message
-                Toast.makeText(LoginAccountActivity.this, ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginAccountActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -290,7 +285,7 @@ public class LoginAccountActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Failed to Google sign in", e);
-                Toast.makeText(this,""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -310,14 +305,13 @@ public class LoginAccountActivity extends AppCompatActivity {
                             if (task.getResult().getAdditionalUserInfo().isNewUser()) {
                                 createUser(user);
                                 // user email
-                                Toast.makeText(LoginAccountActivity.this,"Logged in successful",Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginAccountActivity.this, "Logged in successful", Toast.LENGTH_LONG).show();
                                 // go to home screen after login successful
                                 startActivity(new Intent(LoginAccountActivity.this, FirstTimeActivity.class));
                                 finish();
-                            }
-                            else {
+                            } else {
                                 // user email
-                                Toast.makeText(LoginAccountActivity.this,"Logged in successful",Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginAccountActivity.this, "Logged in successful", Toast.LENGTH_LONG).show();
                                 // go to home screen after login successful
                                 startActivity(new Intent(LoginAccountActivity.this, HomeActivity.class));
                                 finish();
@@ -326,20 +320,20 @@ public class LoginAccountActivity extends AppCompatActivity {
                         } else {
                             Log.d(TAG, "Sign in with Credential: failure");
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginAccountActivity.this,"Login failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginAccountActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoginAccountActivity.this,""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginAccountActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     //Create a new user email and userID:
-    private void createUser(FirebaseUser user){
+    private void createUser(FirebaseUser user) {
         //TODO: Get user email and userID from auth:
         String email = user.getEmail();
         String userID = user.getUid();

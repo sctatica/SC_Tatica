@@ -102,8 +102,10 @@ public class TodayTaskFragment extends Fragment {
                     txtHello.setText("Hello, " + name + ". ");
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
         //Set up for recyclerView:
@@ -159,14 +161,14 @@ public class TodayTaskFragment extends Fragment {
                     image_empty_task.setVisibility(View.INVISIBLE);
                     txtNoTask.setVisibility(View.INVISIBLE);
                     progressDialog.dismiss();
-                }
-                else {
+                } else {
                     recyclerView.setVisibility(View.INVISIBLE);
                     image_empty_task.setVisibility(View.VISIBLE);
                     txtNoTask.setVisibility(View.VISIBLE);
                     progressDialog.dismiss();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -221,6 +223,7 @@ public class TodayTaskFragment extends Fragment {
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
+
         @Override
         public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction) {
             final int position = viewHolder.getAdapterPosition();

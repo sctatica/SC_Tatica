@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    >
+    android:layout_marginEnd="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +38,7 @@
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:id="@+id/imgRank"
-                    android:src="@drawable/rank_demo"
-                    />
+                    android:src="@drawable/rank_demo" />
 
                 <TextView
                     android:layout_marginTop="5dp"
@@ -78,7 +75,6 @@
         android:layout_gravity="center|end"
         android:layout_marginEnd="5dp"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textSize="10sp"
-        />
+        android:textSize="10sp" />
 
 </com.google.android.material.card.MaterialCardView>

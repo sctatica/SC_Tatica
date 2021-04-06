@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
     //Views:
     private ImageView image_cover, image_avatar;
     private TextView txtShowName, txtShowEmail, txtShowPhone,
-                     txtShowBirthday, txtShowTimeWork, txtShowRank;
+            txtShowBirthday, txtShowTimeWork, txtShowRank;
     private FloatingActionButton btnEditProfile;
 
     //Firebase:
@@ -148,7 +148,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +159,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
     private void showPersonalInfoUpdate(String key) {
         //Set up layout of Dialog:
         LinearLayout linearLayout = new LinearLayout(ProfileActivity.this);
@@ -197,8 +199,7 @@ public class ProfileActivity extends AppCompatActivity {
                                     Toast.makeText(ProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
-                        }
-                        else {
+                        } else {
                             Toast.makeText(ProfileActivity.this, "Please input " + key, Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -273,7 +274,7 @@ public class ProfileActivity extends AppCompatActivity {
         boolean isStorage = isStoragePermission();
         if (isCamera && isStorage) {
             startActivity();
-        } else if (!isCamera || !isStorage)  {
+        } else if (!isCamera || !isStorage) {
             ActivityCompat.requestPermissions(this, PhotoPermissions, PHOTO_PERMISSION_CODE);
         }
     }
@@ -316,7 +317,7 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         //img is uploaded to storage, now get it's url and store in user's database
                         Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                        while (!uriTask.isSuccessful());
+                        while (!uriTask.isSuccessful()) ;
                         Uri downloadUri = uriTask.getResult();
                         //check if image is uploaded or not and uri is received or not:
                         if (uriTask.isSuccessful()) {

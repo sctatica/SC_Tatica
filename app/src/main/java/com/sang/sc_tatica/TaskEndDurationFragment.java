@@ -93,6 +93,7 @@ public class TaskEndDurationFragment extends Fragment {
                 adapterTasks = new TaskAdapter(getActivity(), taskList);
                 recyclerView.setAdapter(adapterTasks);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

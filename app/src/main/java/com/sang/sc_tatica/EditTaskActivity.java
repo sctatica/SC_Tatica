@@ -49,7 +49,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText edtName;
     private Spinner spinnerPriorities;
     private TextView txtStartTime, txtStartDate,
-                    txtDueTime, txtDueDate;
+            txtDueTime, txtDueDate;
     private EditText edtShortDesc;
     private Button btnCreateTask;
 
@@ -115,8 +115,10 @@ public class EditTaskActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
         //init current user firebase:
@@ -203,11 +205,9 @@ public class EditTaskActivity extends AppCompatActivity {
 
                 if (name.equals("")) {
                     Toast.makeText(EditTaskActivity.this, "Please input name of task", Toast.LENGTH_SHORT).show();
-                }
-                else if (!date_end.after(date_start)) {
+                } else if (!date_end.after(date_start)) {
                     Toast.makeText(EditTaskActivity.this, "Due date should be after Start date", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     //Create a new Task in firebase:
                     firebaseDatabase = FirebaseDatabase.getInstance();
                     databaseReference = firebaseDatabase.getReference("Tasks");

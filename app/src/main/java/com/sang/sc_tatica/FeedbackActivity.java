@@ -62,7 +62,7 @@ public class FeedbackActivity extends AppCompatActivity {
                     Toast.makeText(FeedbackActivity.this, "Do you have any feedback?", Toast.LENGTH_SHORT).show();
                 else
                     uploadData(feedbackData);
-                }
+            }
         });
     }
 
@@ -77,8 +77,8 @@ public class FeedbackActivity extends AppCompatActivity {
         String user_mail = currentUser.getEmail().toString();
 
         Map<String, Object> user = new HashMap<>();
-        user.put("User's mail",user_mail);
-        user.put("User's feedbacks",feedbackData);
+        user.put("User's mail", user_mail);
+        user.put("User's feedbacks", feedbackData);
 
         // add this data
         db.collection("Feedbacks").document(id).set(user)
@@ -87,7 +87,7 @@ public class FeedbackActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         // this will be called when data is added successfully
                         progressDialog.dismiss();
-                        Toast.makeText(FeedbackActivity.this,"Thanks for your contribution!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FeedbackActivity.this, "Thanks for your contribution!", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -95,7 +95,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 // this will be called if there is any error when uploading
                 progressDialog.dismiss();
                 // get and show error message
-                Toast.makeText(FeedbackActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(FeedbackActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -9,8 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/SC_color2"
-        />
+        android:background="@color/SC_color2" />
 
     <!--    Floating Action Button-->
     <androidx.core.widget.NestedScrollView
@@ -62,8 +61,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="NAME"
                         android:textSize="16sp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_marginTop="10dp" />
 
                     <TextView
                         android:id="@+id/txtShowName"
@@ -75,8 +73,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_below="@id/txtName"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/SC_color2"
-                        />
+                        android:textColor="@color/SC_color2" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -114,8 +111,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_below="@id/txtEmail"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/SC_color2"
-                        />
+                        android:textColor="@color/SC_color2" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -153,8 +149,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_below="@id/txtPhone"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/SC_color2"
-                        />
+                        android:textColor="@color/SC_color2" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -193,8 +188,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_below="@id/txtBirthday"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/SC_color2"
-                        />
+                        android:textColor="@color/SC_color2" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -232,8 +226,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_below="@id/txtTimeWork"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/SC_color2"
-                        />
+                        android:textColor="@color/SC_color2" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -271,8 +264,7 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_below="@id/txtRank"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/SC_color2"
-                        />
+                        android:textColor="@color/SC_color2" />
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>

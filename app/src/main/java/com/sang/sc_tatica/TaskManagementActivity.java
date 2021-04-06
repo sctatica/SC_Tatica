@@ -81,10 +81,12 @@ public class TaskManagementActivity extends AppCompatActivity {
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
+
         @Override
         public int getCount() {
             return 2;
         }
+
         @Override
         public Fragment getItem(int position) {
             switch (position) {
@@ -95,6 +97,7 @@ public class TaskManagementActivity extends AppCompatActivity {
             }
             return null;
         }
+
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {

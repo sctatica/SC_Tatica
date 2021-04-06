@@ -4,7 +4,6 @@
     package="com.sang.sc_tatica"
     android:screenOrientation="portrait"
     tools:ignore="LockedOrientationActivity">
-
     <!-- Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -20,61 +19,67 @@
         android:roundIcon="@drawable/sc_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UserLogin_Registration">
-        <activity android:name="com.sang.sc_tatica.FeedbackActivity"></activity>
         <activity
-            android:name="com.sang.sc_tatica.Ranks.RankActivity"
+            android:name=".HelpActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+
+        </activity>
+        <activity android:name=".FeedbackActivity" />
+        <activity
+            android:name=".Ranks.RankActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.FullTips.FullTipsActivity"
+            android:name=".FullTips.FullTipsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.CommunityActivity"
+            android:name=".CommunityActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.SearchUsersActivity"
+            android:name=".SearchUsersActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.FirstTimeActivity"
+            android:name=".FirstTimeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.ListUserNotesActivity"
+            android:name=".ListUserNotesActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.PomodoroBreakActivity"
+            android:name=".PomodoroBreakActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.NoteInPomodroActivity"
+            android:name=".NoteInPomodroActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.EditTaskActivity"
+            android:name=".EditTaskActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.TaskManagementActivity"
+            android:name=".TaskManagementActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.CreateTaskActivity"
+            android:name=".CreateTaskActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.ProfileActivity"
+            android:name=".ProfileActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.HomeActivity"
+            android:name=".HomeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.SplashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -84,11 +89,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.sang.sc_tatica.RegisterAccountActivity"
+            android:name=".RegisterAccountActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.sang.sc_tatica.LoginAccountActivity"
+            android:name=".LoginAccountActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>

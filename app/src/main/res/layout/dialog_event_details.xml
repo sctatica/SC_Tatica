@@ -17,8 +17,7 @@
             android:layout_gravity="end"
             android:src="@drawable/cross_icon"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="-5dp"
-            />
+            android:layout_marginBottom="-5dp" />
 
         <TextView
             android:id="@+id/txtName"
@@ -32,8 +31,7 @@
             android:textColor="#F57C00"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_margin="5dp"
-            />
+            android:layout_margin="5dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgEvent"
@@ -199,7 +197,6 @@
                 android:text="Available Slot " />
 
         </LinearLayout>
-
 
 
         <LinearLayout

@@ -137,7 +137,7 @@ public class ListUserNotesActivity extends AppCompatActivity {
                         // call when data is retrieved
                         pd.dismiss();
                         // show Data
-                        for (DocumentSnapshot user:task.getResult()){
+                        for (DocumentSnapshot user : task.getResult()) {
                             if (user.getString("userID").equals(currentUser.getUid())) {
                                 ModelUserNotes modelUserNotes = new ModelUserNotes(user.getString("id"),
                                         user.getString("title"),
@@ -156,12 +156,12 @@ public class ListUserNotesActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // called when there is any error while retrieved the data
-                        Toast.makeText(ListUserNotesActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListUserNotesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    public void deleteNote(int index){
+    public void deleteNote(int index) {
         // set title of progress dialog
         pd.setTitle("Deleting notes...");
         pd.show();
@@ -182,7 +182,7 @@ public class ListUserNotesActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         // called when fail
                         pd.dismiss();
-                        Toast.makeText(ListUserNotesActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ListUserNotesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -50,13 +50,13 @@ public class PomodoroFragment extends Fragment {
     private int seconds = 1500;
     private int workTime = 0;
     private boolean running = false;
-//    private boolean wasRunning = false;
-    private boolean  case_55_5 = false;
-    private boolean  case_50_10 = false;
-    private boolean  case_45_15 = false;
-    private boolean  case_40_20 = false;
-    private boolean  case_5_5_test = false;
-    private boolean  played = false;
+    //    private boolean wasRunning = false;
+    private boolean case_55_5 = false;
+    private boolean case_50_10 = false;
+    private boolean case_45_15 = false;
+    private boolean case_40_20 = false;
+    private boolean case_5_5_test = false;
+    private boolean played = false;
 
     //Intent intent;
     FloatingActionButton playButton, pauseButton, letsBreak, reset;
@@ -185,7 +185,7 @@ public class PomodoroFragment extends Fragment {
                 Snackbar snackbar;
                 if (isChecked) {
                     // play music
-                    if (mediaPlayer == null){
+                    if (mediaPlayer == null) {
                         mediaPlayer = MediaPlayer.create(getActivity(), R.raw.sc_music);
                     }
                     mediaPlayer.start();
@@ -193,7 +193,7 @@ public class PomodoroFragment extends Fragment {
                     snackbar = Snackbar.make(layout.findViewById(R.id.music), text_on, duration);
                 } else {
                     // pause music
-                    if (mediaPlayer != null){
+                    if (mediaPlayer != null) {
                         mediaPlayer.pause();
                     }
                     snackbar = Snackbar.make(layout.findViewById(R.id.music), text_off, duration);
@@ -242,9 +242,9 @@ public class PomodoroFragment extends Fragment {
                         HashMap<String, Object> update = new HashMap<>();
                         int totalTime = Integer.parseInt(got_user.getTimeWork()) + workTime;
                         //TODO: Update Rank when the condition of timeWork is matched:
-                        if (totalTime > 1001*60 && totalTime < 2000*60) {
+                        if (totalTime > 1001 * 60 && totalTime < 2000 * 60) {
                             update.put("rank", "Time Controller");
-                        } else if (totalTime > 2001*60 && totalTime < 5000*60) {
+                        } else if (totalTime > 2001 * 60 && totalTime < 5000 * 60) {
                             update.put("rank", "Time Master");
                         }
                         String totalTime_value = String.valueOf(totalTime);
@@ -264,26 +264,22 @@ public class PomodoroFragment extends Fragment {
                 }
 
                 int optionTimeInAuto = 0;
-                if (case_55_5){
+                if (case_55_5) {
                     optionTimeInAuto = 300;
-                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME,optionTimeInAuto);
-                }
-                else if(case_50_10){
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME, optionTimeInAuto);
+                } else if (case_50_10) {
                     //TODO: Set up again to 600s
                     optionTimeInAuto = 600;
-                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
-                }
-                else if(case_45_15){
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME, optionTimeInAuto);
+                } else if (case_45_15) {
                     optionTimeInAuto = 900;
-                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
-                }
-                else if (case_40_20){
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME, optionTimeInAuto);
+                } else if (case_40_20) {
                     optionTimeInAuto = 1200;
-                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
-                }
-                else if (case_5_5_test) {
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME, optionTimeInAuto);
+                } else if (case_5_5_test) {
                     optionTimeInAuto = 5;
-                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME ,optionTimeInAuto);
+                    gotoBreak.putExtra(OPTIONAL_BREAK_TIME, optionTimeInAuto);
                 }
                 startActivity(gotoBreak);
             }
@@ -307,7 +303,7 @@ public class PomodoroFragment extends Fragment {
 
                 // snackbar when press reset button
 
-                Snackbar snackbar = Snackbar.make(layout.findViewById(R.id.reset),"Reset",BaseTransientBottomBar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(layout.findViewById(R.id.reset), "Reset", BaseTransientBottomBar.LENGTH_LONG);
                 snackbar.setAction("Undo", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -417,6 +413,7 @@ public class PomodoroFragment extends Fragment {
                                     break;
                             }
                         }
+
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
                             seconds = 1500;
@@ -483,6 +480,7 @@ public class PomodoroFragment extends Fragment {
                 User user = snapshot.getValue(User.class);
                 timeWorkCallBack.onCallBack(user);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -501,14 +499,14 @@ public class PomodoroFragment extends Fragment {
                 int secs = seconds % 60;
 
                 String time = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
-                String time_test = String.format(Locale.getDefault(), "%03d",workTime);
+                String time_test = String.format(Locale.getDefault(), "%03d", workTime);
                 textView.setText(time);
 
                 if (seconds == 0) {
                     running = false;
-                        if (mediaPlayer_end == null){
-                            mediaPlayer_end= MediaPlayer.create(getActivity(), R.raw.sound_end);
-                        }
+                    if (mediaPlayer_end == null) {
+                        mediaPlayer_end = MediaPlayer.create(getActivity(), R.raw.sound_end);
+                    }
                     mediaPlayer_end.start();
 
                     onClickStop(new TimeWorkCallBack() {
@@ -519,9 +517,9 @@ public class PomodoroFragment extends Fragment {
                             HashMap<String, Object> update = new HashMap<>();
                             int totalTime = Integer.parseInt(got_user.getTimeWork()) + workTime;
                             //TODO: Update Rank when the condition of timeWork is matched:
-                            if (totalTime > 1001*60 && totalTime < 2000*60) {
+                            if (totalTime > 1001 * 60 && totalTime < 2000 * 60) {
                                 update.put("rank", "Time Controller");
-                            } else if (totalTime > 2001*60 && totalTime < 5000*60) {
+                            } else if (totalTime > 2001 * 60 && totalTime < 5000 * 60) {
                                 update.put("rank", "Time Master");
                             }
                             String totalTime_value = String.valueOf(totalTime);

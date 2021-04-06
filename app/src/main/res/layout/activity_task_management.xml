@@ -10,8 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/SC_color2"
-        />
+        android:background="@color/SC_color2" />
 
     <CalendarView
         android:layout_below="@id/toolbar"
@@ -19,15 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/custom_calendar"
-        />
+        android:layout_below="@id/custom_calendar" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

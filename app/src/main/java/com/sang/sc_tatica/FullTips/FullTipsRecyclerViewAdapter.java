@@ -54,7 +54,7 @@ public class FullTipsRecyclerViewAdapter extends RecyclerView.Adapter<FullTipsRe
         return TipsList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView typeTv;
         TextView titleTv;

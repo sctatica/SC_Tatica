@@ -158,7 +158,7 @@ public class SearchUsersActivity extends AppCompatActivity {
         return true;
     }
 
-    private void getFriendsList(UsersIDCallBack users){
+    private void getFriendsList(UsersIDCallBack users) {
         databaseReference = firebaseDatabase.getReference("Users");
         databaseReference.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -179,6 +179,7 @@ public class SearchUsersActivity extends AppCompatActivity {
             }
         });
     }
+
     private void getFriendsView() {
         toolbar.setTitle("Friends");
         progressDialog.setTitle("Loading friends...\nCheck your connection");
@@ -215,12 +216,12 @@ public class SearchUsersActivity extends AppCompatActivity {
                             adapter = new OtherUsersAdapter(SearchUsersActivity.this, userList);
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
-                        }
-                        else {
+                        } else {
                             progressDialog.dismiss();
                             getOtherUsersView();
                         }
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -229,6 +230,7 @@ public class SearchUsersActivity extends AppCompatActivity {
             }
         });
     }
+
     private void getOtherUsersView() {
         toolbar.setTitle("Other Users");
         progressDialog.setTitle("Loading other users...\nCheck your connection");
@@ -267,6 +269,7 @@ public class SearchUsersActivity extends AppCompatActivity {
                         }
                         progressDialog.dismiss();
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
