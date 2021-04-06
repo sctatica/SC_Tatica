@@ -32,6 +32,6 @@
 
 # Contributors
 * Miss Võ Tường Vy
-* Mr. NT Hiếu Bảo
+* Mr. Nguyễn Trần Hiếu Bảo
 * Mr. Võ Phạm Hoài Nam
 * Mr. Nguyễn Đình Sáng
